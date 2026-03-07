@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OfficeHomeTechX — Find Trusted Technicians Near You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+/* ═══════════════════════════════════════════════════
+   OfficeHomeTechX — All Styles
+═══════════════════════════════════════════════════ */
+:root {
+  --primary:       #1d4ed8;
+  --primary-dark:  #1e3a8a;
+  --primary-light: #3b82f6;
+  --accent:        #0ea5e9;
+  --success:       #10b981;
+  --danger:        #ef4444;
+  --bg:            #f8fafc;
+  --surface:       #ffffff;
+  --surface-2:     #f1f5f9;
+  --border:        #e2e8f0;
+  --border-light:  #f1f5f9;
+  --text-primary:  #0f172a;
+  --text-secondary:#475569;
+  --text-muted:    #94a3b8;
+  --shadow-sm:     0 1px 3px rgba(0,0,0,.08);
+  --shadow-md:     0 4px 16px rgba(0,0,0,.08),0 2px 6px rgba(0,0,0,.04);
+  --shadow-lg:     0 12px 40px rgba(0,0,0,.12),0 4px 12px rgba(0,0,0,.06);
+  --shadow-xl:     0 24px 60px rgba(0,0,0,.14);
+  --shadow-blue:   0 8px 30px rgba(29,78,216,.25);
+  --radius-sm:  8px; --radius-md:  14px; --radius-lg:  20px;
+  --radius-xl:  28px; --radius-full:9999px;
+  --transition: all .22s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.6;overflow-x:hidden;}
+h1,h2,h3,h4,h5{font-family:'Outfit',sans-serif;line-height:1.2;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{max-width:100%;display:block;}
+button{cursor:pointer;font-family:inherit;border:none;outline:none;}
+input,select,textarea{font-family:'DM Sans',sans-serif;font-size:.95rem;outline:none;border:none;background:transparent;}
+input::placeholder,textarea::placeholder{color:var(--text-muted);}
+
+/* UTILITY */
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+.gradient-text{background:linear-gradient(135deg,var(--primary-light) 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.section-header{text-align:center;margin-bottom:56px;}
+.section-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(29,78,216,.08);color:var(--primary);border:1px solid rgba(29,78,216,.15);font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 14px;border-radius:var(--radius-full);margin-bottom:16px;}
+.section-header h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;margin-bottom:14px;}
+.section-header p{font-size:1.05rem;color:var(--text-secondary);max-width:520px;margin:0 auto;}
+
+/* BUTTONS */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--primary);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;padding:13px 26px;border-radius:var(--radius-full);transition:var(--transition);box-shadow:var(--shadow-blue);white-space:nowrap;}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:0 12px 36px rgba(29,78,216,.35);}
+.btn-primary:active{transform:translateY(0);}
+.btn-primary.full-width{width:100%;justify-content:center;}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);color:#fff;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;padding:13px 26px;border-radius:var(--radius-full);border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(8px);transition:var(--transition);}
+.btn-ghost:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.5);transform:translateY(-2px);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--primary);font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;padding:9px 20px;border-radius:var(--radius-full);border:1.5px solid var(--primary);transition:var(--transition);}
+.btn-outline:hover{background:var(--primary);color:#fff;}
+.btn-green{display:inline-flex;align-items:center;gap:8px;background:#25d366;color:#fff;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:600;padding:9px 20px;border-radius:var(--radius-full);transition:var(--transition);}
+.btn-green:hover{background:#1ebe57;transform:translateY(-1px);}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(1.8);border-bottom:1px solid transparent;transition:var(--transition);}
+.navbar.scrolled{background:rgba(255,255,255,.96);border-bottom-color:var(--border);box-shadow:var(--shadow-md);}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:600;color:var(--text-primary);}
+.nav-logo strong{color:var(--primary);font-weight:800;}
+.logo-icon{width:36px;height:36px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;}
+.logo-icon svg{width:18px;height:18px;}
+.nav-links{display:flex;align-items:center;gap:4px;}
+.nav-links a{font-size:.9rem;font-weight:500;color:var(--text-secondary);padding:8px 14px;border-radius:var(--radius-full);transition:var(--transition);}
+.nav-links a:hover{color:var(--primary);background:rgba(29,78,216,.07);}
+.nav-links .nav-cta{background:var(--primary);color:#fff;font-weight:600;padding:8px 18px;box-shadow:var(--shadow-blue);}
+.nav-links .nav-cta:hover{background:var(--primary-dark);color:#fff;}
+.nav-links .nav-login{color:var(--primary);font-weight:600;border:1.5px solid var(--primary);}
+.nav-links .nav-login:hover{background:var(--primary);color:#fff;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;padding:6px;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text-primary);border-radius:2px;transition:var(--transition);}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#1d4ed8 100%);display:flex;align-items:center;padding:120px 24px 80px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.25;}
+.blob-1{width:600px;height:600px;background:#3b82f6;top:-200px;right:-100px;animation:blobFloat 8s ease-in-out infinite;}
+.blob-2{width:400px;height:400px;background:#0ea5e9;bottom:-100px;left:-80px;animation:blobFloat 10s ease-in-out infinite reverse;}
+.blob-3{width:300px;height:300px;background:#8b5cf6;top:50%;left:40%;animation:blobFloat 12s ease-in-out infinite;}
+@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-20px) scale(1.05);}66%{transform:translate(-20px,20px) scale(.95);}}
+.hero-content{max-width:640px;position:relative;z-index:2;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:500;padding:6px 14px;border-radius:var(--radius-full);margin-bottom:24px;backdrop-filter:blur(8px);animation:fadeSlideUp .8s ease forwards;}
+.hero-badge svg{width:15px;height:15px;color:#4ade80;}
+.hero-title{font-family:'Outfit',sans-serif;font-size:clamp(2.6rem,6vw,4.2rem);font-weight:900;color:#fff;line-height:1.08;letter-spacing:-.02em;margin-bottom:20px;animation:fadeSlideUp .8s .1s ease both;}
+.hero-subtitle{font-size:1.1rem;color:rgba(255,255,255,.72);margin-bottom:36px;line-height:1.7;animation:fadeSlideUp .8s .2s ease both;}
+.hero-search{position:relative;margin-bottom:20px;animation:fadeSlideUp .8s .3s ease both;}
+.search-wrapper{display:flex;background:#fff;border-radius:var(--radius-full);box-shadow:0 8px 40px rgba(0,0,0,.3);overflow:hidden;align-items:center;}
+.search-icon{padding:0 16px 0 20px;color:var(--text-muted);flex-shrink:0;}
+.search-icon svg{width:20px;height:20px;}
+.search-wrapper input{flex:1;padding:16px 8px;font-size:1rem;color:var(--text-primary);background:transparent;}
+.search-wrapper .btn-primary{margin:5px;border-radius:var(--radius-full);font-size:.9rem;}
+.search-suggestions{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border-radius:var(--radius-md);box-shadow:var(--shadow-lg);overflow:hidden;z-index:100;display:none;}
+.search-suggestions.active{display:block;}
+.suggestion-item{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:.9rem;color:var(--text-primary);cursor:pointer;transition:var(--transition);}
+.suggestion-item:hover{background:var(--surface-2);color:var(--primary);}
+.suggestion-item svg{color:var(--text-muted);width:16px;height:16px;}
+.hero-actions{margin-bottom:48px;animation:fadeSlideUp .8s .4s ease both;}
+.hero-stats{display:flex;align-items:center;animation:fadeSlideUp .8s .5s ease both;}
+.stat{text-align:center;padding:0 24px;}
+.stat:first-child{padding-left:0;}
+.stat strong{display:block;font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:800;color:#fff;}
+.stat span{font-size:.82rem;color:rgba(255,255,255,.6);font-weight:500;}
+.stat-divider{width:1px;height:36px;background:rgba(255,255,255,.2);}
+.hero-visual{position:absolute;right:6vw;top:50%;transform:translateY(-50%);z-index:2;display:none;}
+.floating-card{background:rgba(255,255,255,.12);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-lg);padding:16px;display:flex;align-items:center;gap:12px;color:#fff;box-shadow:var(--shadow-lg);min-width:240px;}
+.floating-card img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.3);}
+.floating-card strong{display:block;font-size:.95rem;font-weight:600;}
+.floating-card span{font-size:.78rem;opacity:.75;}
+.mini-stars{font-size:.75rem;color:#fbbf24;margin-top:2px;}
+.card-a{animation:cardFloat 4s ease-in-out infinite;}
+.card-b{margin-top:16px;animation:cardFloat 4s 1.5s ease-in-out infinite;}
+.card-c{margin-top:16px;background:rgba(16,185,129,.2);border-color:rgba(16,185,129,.3);justify-content:center;min-width:auto;padding:12px 20px;gap:8px;font-size:.9rem;font-weight:600;animation:cardFloat 4s .8s ease-in-out infinite;}
+.card-c svg{color:#4ade80;width:18px;height:18px;}
+@keyframes cardFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+
+/* SERVICES */
+.services-section{padding:100px 0;background:var(--surface);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+.service-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);padding:32px 28px;transition:var(--transition);position:relative;overflow:hidden;cursor:pointer;}
+.service-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--primary),var(--accent));opacity:0;transition:var(--transition);border-radius:inherit;}
+.service-card:hover{border-color:var(--primary);transform:translateY(-6px);box-shadow:var(--shadow-lg);}
+.service-card:hover::before{opacity:.04;}
+.service-card:hover .service-icon{background:var(--primary);color:#fff;}
+.service-icon{width:56px;height:56px;background:rgba(29,78,216,.08);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--primary);margin-bottom:20px;transition:var(--transition);}
+.service-icon svg{width:26px;height:26px;}
+.service-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;position:relative;z-index:1;}
+.service-card p{font-size:.88rem;color:var(--text-secondary);margin-bottom:20px;line-height:1.6;position:relative;z-index:1;}
+.service-card .btn-outline{position:relative;z-index:1;}
+
+/* DIRECTORY */
+.directory-section{padding:100px 0;background:var(--bg);}
+.filter-bar{display:flex;gap:14px;align-items:center;margin-bottom:40px;flex-wrap:wrap;}
+.filter-search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-full);padding:10px 18px;transition:var(--transition);}
+.filter-search:focus-within{border-color:var(--primary);box-shadow:0 0 0 3px rgba(29,78,216,.1);}
+.filter-search svg{width:17px;height:17px;color:var(--text-muted);flex-shrink:0;}
+.filter-search input{flex:1;font-size:.9rem;}
+.filter-bar select{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-full);padding:10px 36px 10px 18px;font-size:.9rem;color:var(--text-primary);cursor:pointer;transition:var(--transition);appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;}
+.filter-bar select:focus{border-color:var(--primary);outline:none;box-shadow:0 0 0 3px rgba(29,78,216,.1);}
+.technicians-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+.tech-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);animation:fadeSlideUp .5s ease both;}
+.tech-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(29,78,216,.2);}
+.tech-card-header{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);padding:24px;display:flex;align-items:center;gap:16px;position:relative;}
+.tech-avatar{width:68px;height:68px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.4);flex-shrink:0;}
+.tech-avatar-placeholder{width:68px;height:68px;border-radius:50%;background:rgba(255,255,255,.2);border:3px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;color:#fff;flex-shrink:0;}
+.tech-header-info{flex:1;}
+.tech-header-info h3{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.tech-badge{display:inline-block;background:rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:.75rem;font-weight:600;padding:2px 10px;border-radius:var(--radius-full);margin-bottom:4px;}
+.tech-verified{position:absolute;top:14px;right:14px;background:#10b981;color:#fff;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.tech-verified svg{width:14px;height:14px;}
+.tech-card-body{padding:20px 24px;}
+.tech-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+.tech-meta-row{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--text-secondary);}
+.tech-meta-row svg{width:15px;height:15px;color:var(--primary);flex-shrink:0;}
+.tech-rating{display:flex;align-items:center;gap:6px;font-size:.9rem;}
+.stars{color:#f59e0b;font-size:1rem;letter-spacing:1px;}
+.rating-num{font-weight:600;color:var(--text-primary);font-size:.85rem;}
+.tech-card-actions{display:flex;gap:8px;padding:0 24px 20px;}
+.tech-card-actions button{flex:1;font-size:.82rem;padding:9px 14px;}
+.no-results{text-align:center;padding:60px 24px;color:var(--text-muted);}
+.no-results svg{width:48px;height:48px;margin:0 auto 12px;}
+
+/* HOW IT WORKS */
+.how-section{padding:100px 0;background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 100%);position:relative;overflow:hidden;}
+.how-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:50px 50px;}
+.how-section .section-badge{background:rgba(255,255,255,.1);color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.15);}
+.how-section .section-header h2{color:#fff;}
+.how-section .section-header p{color:rgba(255,255,255,.65);}
+.steps-grid{display:flex;align-items:center;justify-content:center;gap:0;position:relative;z-index:1;}
+.step-card{flex:1;max-width:280px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-xl);padding:36px 28px;text-align:center;transition:var(--transition);backdrop-filter:blur(8px);}
+.step-card:hover{background:rgba(255,255,255,.12);transform:translateY(-6px);}
+.step-number{font-family:'Outfit',sans-serif;font-size:3.5rem;font-weight:900;color:rgba(255,255,255,.07);line-height:1;margin-bottom:4px;}
+.step-icon{width:60px;height:60px;background:linear-gradient(135deg,var(--primary-light),var(--accent));border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:#fff;margin:0 auto 20px;box-shadow:0 8px 24px rgba(59,130,246,.4);}
+.step-icon svg{width:28px;height:28px;}
+.step-card h3{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:12px;}
+.step-card p{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.7;}
+.step-connector{display:flex;align-items:center;justify-content:center;padding:0 16px;color:rgba(255,255,255,.3);flex-shrink:0;}
+.step-connector svg{width:28px;height:28px;}
+
+/* REGISTER */
+.register-section{padding:100px 0;background:var(--surface);}
+.register-layout{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:start;}
+.register-info{position:sticky;top:100px;}
+.register-info h2{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:800;margin-bottom:16px;}
+.register-info p{font-size:1rem;color:var(--text-secondary);line-height:1.7;margin-bottom:28px;}
+.register-perks{display:flex;flex-direction:column;gap:12px;}
+.register-perks li{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:500;}
+.register-perks li svg{color:var(--success);width:18px;height:18px;flex-shrink:0;}
+.register-form-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-xl);padding:40px;box-shadow:var(--shadow-lg);}
+.register-form-card h3{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;margin-bottom:28px;padding-bottom:20px;border-bottom:1.5px solid var(--border);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:18px;}
+.form-group label{font-size:.82rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em;}
+.form-group input,.form-group select,.form-group textarea{background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:11px 14px;font-size:.92rem;color:var(--text-primary);transition:var(--transition);width:100%;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(29,78,216,.1);}
+.form-group textarea{resize:vertical;min-height:90px;}
+.input-icon-wrap{position:relative;}
+.input-icon-wrap input{padding-right:40px;width:100%;}
+.toggle-pw{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);cursor:pointer;width:17px;height:17px;}
+.photo-upload{background:var(--bg);border:2px dashed var(--border);border-radius:var(--radius-md);padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:var(--transition);color:var(--text-muted);font-size:.85rem;}
+.photo-upload:hover{border-color:var(--primary);color:var(--primary);background:rgba(29,78,216,.03);}
+.photo-upload svg{width:28px;height:28px;}
+.photo-preview{width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--primary);margin-top:8px;}
+.form-footer{text-align:center;margin-top:16px;font-size:.88rem;color:var(--text-muted);}
+.form-footer a{color:var(--primary);font-weight:600;}
+.form-footer a:hover{text-decoration:underline;}
+
+/* FOOTER */
+.footer{background:#0f172a;color:rgba(255,255,255,.7);padding:80px 0 0;}
+.footer-container{max-width:1200px;margin:0 auto;padding:0 24px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:48px;border-bottom:1px solid rgba(255,255,255,.08);}
+.footer-brand .nav-logo{color:#fff;margin-bottom:16px;}
+.footer-brand p{font-size:.88rem;line-height:1.7;max-width:260px;}
+.social-links{display:flex;gap:10px;margin-top:20px;}
+.social-links a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);transition:var(--transition);}
+.social-links a:hover{background:var(--primary);color:#fff;border-color:var(--primary);}
+.social-links svg{width:16px;height:16px;}
+.footer-links h4,.footer-contact h4{font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px;}
+.footer-links li{margin-bottom:10px;}
+.footer-links a{font-size:.88rem;color:rgba(255,255,255,.6);transition:var(--transition);}
+.footer-links a:hover{color:var(--primary-light);}
+.contact-item{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:.88rem;}
+.contact-item svg{width:16px;height:16px;color:var(--primary-light);flex-shrink:0;}
+.contact-item a{color:rgba(255,255,255,.6);transition:var(--transition);}
+.contact-item a:hover{color:var(--primary-light);}
+.footer-bottom{max-width:1200px;margin:0 auto;padding:20px 24px;text-align:center;font-size:.82rem;color:rgba(255,255,255,.4);}
+
+/* MODALS */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:opacity .25s ease;}
+.modal-overlay.active{opacity:1;pointer-events:all;}
+.modal-card{background:var(--surface);border-radius:var(--radius-xl);padding:40px;max-width:480px;width:100%;box-shadow:var(--shadow-xl);position:relative;transform:translateY(20px) scale(.97);transition:var(--transition);max-height:90vh;overflow-y:auto;}
+.modal-overlay.active .modal-card{transform:translateY(0) scale(1);}
+.modal-close{position:absolute;top:18px;right:18px;width:34px;height:34px;border-radius:50%;background:var(--surface-2);color:var(--text-secondary);display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+.modal-close:hover{background:var(--border);color:var(--text-primary);}
+.modal-close svg{width:16px;height:16px;}
+.modal-header{text-align:center;margin-bottom:28px;}
+.modal-header .logo-icon{margin:0 auto 16px;width:52px;height:52px;border-radius:14px;}
+.modal-header .logo-icon svg{width:26px;height:26px;}
+.modal-header h3{font-size:1.5rem;font-weight:800;margin-bottom:6px;}
+.modal-header p{font-size:.9rem;color:var(--text-secondary);}
+/* Tech detail modal */
+.tech-modal-card{max-width:560px;padding:0;overflow:hidden;}
+.tech-modal-header{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);padding:32px;display:flex;align-items:center;gap:20px;}
+.tech-modal-avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.4);flex-shrink:0;}
+.tech-modal-avatar-ph{width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.2);border:3px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:2rem;font-weight:700;color:#fff;flex-shrink:0;}
+.tech-modal-name{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:4px;}
+.tech-modal-service{display:inline-block;background:rgba(255,255,255,.2);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;padding:3px 12px;border-radius:var(--radius-full);margin-bottom:8px;}
+.tech-modal-stars{color:#fbbf24;font-size:1.1rem;}
+.tech-modal-body{padding:28px 32px;}
+.tech-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+.tech-detail-item{display:flex;align-items:flex-start;gap:10px;}
+.tech-detail-item svg{color:var(--primary);width:17px;height:17px;margin-top:2px;flex-shrink:0;}
+.tech-detail-item div{display:flex;flex-direction:column;}
+.tech-detail-item span:first-child{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text-muted);font-weight:600;}
+.tech-detail-item span:last-child{font-size:.92rem;font-weight:500;color:var(--text-primary);}
+.tech-bio{background:var(--bg);border-radius:var(--radius-md);padding:16px;font-size:.88rem;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;}
+.tech-contact-btns{display:flex;gap:12px;}
+.tech-contact-btns button{flex:1;}
+/* Dashboard */
+.dashboard-card{max-width:680px;}
+.dash-nav{display:flex;gap:4px;background:var(--bg);border-radius:var(--radius-md);padding:5px;margin-bottom:28px;}
+.dash-tab{flex:1;text-align:center;padding:9px 16px;border-radius:var(--radius-sm);font-size:.85rem;font-weight:600;color:var(--text-secondary);transition:var(--transition);cursor:pointer;}
+.dash-tab.active{background:var(--surface);color:var(--primary);box-shadow:var(--shadow-sm);}
+.dash-tab:hover:not(.active){color:var(--text-primary);}
+.profile-preview-card{background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:var(--radius-lg);padding:24px;display:flex;align-items:center;gap:16px;margin-bottom:20px;color:#fff;}
+.profile-preview-card .avatar-ph{width:70px;height:70px;border-radius:50%;border:3px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:700;background:rgba(255,255,255,.2);flex-shrink:0;}
+.profile-preview-card h3{font-size:1.2rem;font-weight:700;margin-bottom:4px;}
+.profile-preview-card p{font-size:.85rem;opacity:.8;}
+.dash-section h4{font-size:1rem;font-weight:700;margin-bottom:16px;color:var(--text-primary);}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border-light);font-size:.9rem;}
+.info-row:last-child{border:none;}
+.info-label{color:var(--text-muted);font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;}
+.info-value{font-weight:500;}
+.logout-btn{background:rgba(239,68,68,.08);color:var(--danger);border:1.5px solid rgba(239,68,68,.2);border-radius:var(--radius-full);padding:10px 20px;font-size:.9rem;font-weight:600;width:100%;margin-top:20px;transition:var(--transition);}
+.logout-btn:hover{background:var(--danger);color:#fff;}
+
+/* TOAST */
+.toast{position:fixed;bottom:28px;right:28px;background:var(--text-primary);color:#fff;border-radius:var(--radius-md);padding:14px 20px;display:flex;align-items:center;gap:10px;font-size:.9rem;font-weight:500;box-shadow:var(--shadow-xl);z-index:9999;transform:translateY(80px);opacity:0;transition:var(--transition);max-width:340px;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.success{background:var(--success);}
+.toast.error{background:var(--danger);}
+.toast svg{width:18px;height:18px;flex-shrink:0;}
+
+/* SCROLL TOP */
+.scroll-top{position:fixed;bottom:28px;left:28px;width:44px;height:44px;background:var(--primary);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-blue);opacity:0;pointer-events:none;transition:var(--transition);z-index:900;}
+.scroll-top.visible{opacity:1;pointer-events:all;}
+.scroll-top:hover{background:var(--primary-dark);transform:translateY(-3px);}
+.scroll-top svg{width:20px;height:20px;}
+
+/* RESPONSIVE */
+@media(min-width:1100px){.hero-visual{display:block;}}
+@media(max-width:992px){
+  .register-layout{grid-template-columns:1fr;}
+  .register-info{position:static;}
+  .footer-container{grid-template-columns:1fr 1fr;}
+  .steps-grid{flex-direction:column;gap:20px;}
+  .step-connector{transform:rotate(90deg);padding:4px 0;}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:68px;left:0;right:0;background:var(--surface);flex-direction:column;gap:4px;padding:16px 24px 24px;border-bottom:1px solid var(--border);box-shadow:var(--shadow-md);transform:translateY(-110%);transition:var(--transition);align-items:stretch;}
+  .nav-links.open{transform:translateY(0);}
+  .nav-links a{padding:12px 16px;border-radius:var(--radius-md);}
+  .hamburger{display:flex;}
+  .hero{padding:110px 24px 60px;text-align:center;}
+  .hero-content{max-width:100%;}
+  .hero-stats{justify-content:center;}
+  .hero-actions{display:flex;justify-content:center;}
+  .search-wrapper{flex-direction:column;border-radius:var(--radius-lg);padding:8px;}
+  .search-wrapper input{padding:12px 16px;width:100%;}
+  .search-wrapper .btn-primary{width:100%;border-radius:var(--radius-md);margin:0;}
+  .search-icon{display:none;}
+  .form-row{grid-template-columns:1fr;}
+  .register-form-card{padding:28px 20px;}
+  .footer-container{grid-template-columns:1fr;gap:36px;}
+  .tech-detail-grid{grid-template-columns:1fr;}
+  .tech-contact-btns{flex-direction:column;}
+  .dashboard-card{padding:28px 20px;}
+  .services-grid,.technicians-grid{grid-template-columns:1fr;}
+}
+@media(max-width:480px){
+  .modal-card{padding:28px 20px;}
+  .tech-modal-header{padding:24px 20px;flex-direction:column;text-align:center;}
+  .tech-modal-body{padding:20px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="nav-logo">
+      <div class="logo-icon"><i data-lucide="zap"></i></div>
+      <span>OfficeHome<strong>TechX</strong></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#technicians">Technicians</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#register" class="nav-cta">Join as Technician</a></li>
+      <li><a href="#" class="nav-login" id="navLoginBtn" onclick="showLoginModal();return false;">Login</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-blob blob-1"></div>
+    <div class="hero-blob blob-2"></div>
+    <div class="hero-blob blob-3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i data-lucide="shield-check"></i>
+      <span>Trusted by 5,000+ customers across Rwanda</span>
+    </div>
+    <h1 class="hero-title">
+      Find <span class="gradient-text">Trusted</span><br/>
+      Technicians Near You
+    </h1>
+    <p class="hero-subtitle">
+      Interior design, plumbing, electrical, IT support and more.<br/>
+      Professional services at your doorstep — fast, reliable, vetted.
+    </p>
+    <div class="hero-search">
+      <div class="search-wrapper">
+        <div class="search-icon"><i data-lucide="search"></i></div>
+        <input type="text" id="heroSearch" placeholder="Search a service (e.g. Plumber, Electrician…)" autocomplete="off"/>
+        <button class="btn-primary" onclick="handleHeroSearch()">Find Technician</button>
+      </div>
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+    <div class="hero-actions">
+      <button class="btn-ghost" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">
+        <i data-lucide="user-plus"></i> Register as Technician
+      </button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>2,400+</strong><span>Technicians</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>15K+</strong><span>Jobs Done</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>4.8★</strong><span>Avg Rating</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="floating-card card-a">
+      <img src="images/amani.jpg" alt="tech"/>
+      <div><strong>Jean Bosco</strong><span>Electrician · Kigali</span><div class="mini-stars">★★★★★</div></div>
+    </div>
+    <div class="floating-card card-b">
+      <img src="images/amani.jpg" alt="tech"/>
+      <div><strong>Amina Uwase</strong><span>Interior Design · Kigali</span><div class="mini-stars">★★★★★</div></div>
+    </div>
+    <div class="floating-card card-c">
+      <i data-lucide="check-circle"></i><span>Job Completed!</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services-section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Our Services</div>
+      <h2>What We <span class="gradient-text">Offer</span></h2>
+      <p>From plumbing to IT support — find the right professional for every job</p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- ═══ TECHNICIAN DIRECTORY ═══ -->
+<section class="directory-section" id="technicians">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Technician Directory</div>
+      <h2>Meet Our <span class="gradient-text">Experts</span></h2>
+      <p>Verified professionals ready to help you today</p>
+    </div>
+    <div class="filter-bar">
+      <div class="filter-search">
+        <i data-lucide="search"></i>
+        <input type="text" id="dirSearch" placeholder="Search by name or skill…" oninput="filterTechnicians()"/>
+      </div>
+      <select id="dirFilter" onchange="filterTechnicians()">
+        <option value="">All Services</option>
+        <option>Plumbing</option><option>Electrical</option><option>Interior Design</option>
+        <option>IT Support</option><option>Network Installation</option>
+        <option>CCTV Installation</option><option>Appliance Repair</option>
+      </select>
+      <select id="dirLocation" onchange="filterTechnicians()">
+        <option value="">All Locations</option>
+        <option>Kigali</option><option>Huye</option><option>Musanze</option>
+        <option>Rubavu</option><option>Butare</option>
+      </select>
+    </div>
+    <div class="technicians-grid" id="techniciansGrid"></div>
+    <div class="no-results" id="noResults" style="display:none">
+      <i data-lucide="search-x"></i>
+      <p>No technicians found. Try adjusting your filters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">Simple Process</div>
+      <h2>How It <span class="gradient-text">Works</span></h2>
+      <p>Hire a professional in 3 simple steps</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <div class="step-icon"><i data-lucide="search"></i></div>
+        <h3>Search</h3>
+        <p>Browse our directory or search for the specific service you need by category or location.</p>
+      </div>
+      <div class="step-connector"><i data-lucide="arrow-right"></i></div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <div class="step-icon"><i data-lucide="user-check"></i></div>
+        <h3>View Profile</h3>
+        <p>Review technician profiles, ratings, experience, and previous work before deciding.</p>
+      </div>
+      <div class="step-connector"><i data-lucide="arrow-right"></i></div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <div class="step-icon"><i data-lucide="phone-call"></i></div>
+        <h3>Contact & Hire</h3>
+        <p>Call directly or message via WhatsApp to discuss your project and get started immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REGISTRATION ═══ -->
+<section class="register-section" id="register">
+  <div class="container">
+    <div class="register-layout">
+      <div class="register-info">
+        <div class="section-badge">Join Our Network</div>
+        <h2>Register as a <span class="gradient-text">Technician</span></h2>
+        <p>Join thousands of professionals earning through OfficeHomeTechX. Get discovered by customers who need your skills right now.</p>
+        <ul class="register-perks">
+          <li><i data-lucide="check-circle"></i> Free profile listing</li>
+          <li><i data-lucide="check-circle"></i> Direct customer contacts</li>
+          <li><i data-lucide="check-circle"></i> Grow your reputation with ratings</li>
+          <li><i data-lucide="check-circle"></i> Mobile-friendly dashboard</li>
+        </ul>
+      </div>
+      <div class="register-form-card">
+        <h3>Create Your Profile</h3>
+        <form id="registerForm" onsubmit="handleRegister(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="regName" placeholder="e.g. Jean Bosco" required/>
+            </div>
+            <div class="form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="regPhone" placeholder="+250 7XX XXX XXX" required/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="regEmail" placeholder="you@example.com" required/>
+            </div>
+            <div class="form-group">
+              <label>Service Type *</label>
+              <select id="regService" required>
+                <option value="">Select a service</option>
+                <option>Plumbing</option><option>Electrical</option><option>Interior Design</option>
+                <option>IT Support</option><option>Network Installation</option>
+                <option>CCTV Installation</option><option>Appliance Repair</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Location *</label>
+              <input type="text" id="regLocation" placeholder="e.g. Kigali, Nyarugenge" required/>
+            </div>
+            <div class="form-group">
+              <label>Years of Experience *</label>
+              <input type="number" id="regExp" placeholder="e.g. 5" min="0" max="50" required/>
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:18px">
+            <label>Short Bio</label>
+            <textarea id="regBio" placeholder="Tell customers about your skills and experience…" rows="3"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Profile Photo</label>
+              <div class="photo-upload" id="photoUploadArea" onclick="document.getElementById('regPhoto').click()">
+                <i data-lucide="camera"></i>
+                <span>Click to upload photo</span>
+                <input type="file" id="regPhoto" accept="image/*" style="display:none" onchange="previewPhoto(event)"/>
+              </div>
+              <img id="photoPreview" class="photo-preview" style="display:none" alt="Preview"/>
+            </div>
+            <div class="form-group">
+              <label>Password *</label>
+              <div class="input-icon-wrap">
+                <input type="password" id="regPassword" placeholder="Create a secure password" required/>
+                <i data-lucide="eye" class="toggle-pw" onclick="togglePassword('regPassword',this)"></i>
+              </div>
+              <label style="margin-top:12px">Confirm Password *</label>
+              <div class="input-icon-wrap" style="margin-top:6px">
+                <input type="password" id="regConfirmPw" placeholder="Repeat your password" required/>
+                <i data-lucide="eye" class="toggle-pw" onclick="togglePassword('regConfirmPw',this)"></i>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary full-width">
+            <i data-lucide="user-plus"></i> Register Now
+          </button>
+        </form>
+        <p class="form-footer">Already registered? <a href="#" onclick="showLoginModal();return false;">Login here</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer" id="contact">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">
+        <div class="logo-icon"><i data-lucide="zap"></i></div>
+        <span>OfficeHome<strong>TechX</strong></span>
+      </a>
+      <p>Connecting customers with skilled technicians across Rwanda. Professional. Reliable. Fast.</p>
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        <a href="#" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#technicians">Find Technicians</a></li>
+        <li><a href="#register">Register as Technician</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Plumbing</a></li>
+        <li><a href="#">Electrical</a></li>
+        <li><a href="#">IT Support</a></li>
+        <li><a href="#">Interior Design</a></li>
+        <li><a href="#">CCTV Installation</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact Us</h4>
+      <div class="contact-item"><i data-lucide="mail"></i><a href="mailto:info@officehometechx.rw">hometekx@gmail.com/a></div>
+      <div class="contact-item"><i data-lucide="phone"></i><a href="tel:+250788000000">+250 788233298 /+250780289448</a></div>
+      <div class="contact-item"><i data-lucide="map-pin"></i><span>Kigali, Rwanda</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> OfficeHomeTechX. All rights reserved. Built with ❤️ in Rwanda.</p>
+  </div>
+</footer>
+
+<!-- ═══ LOGIN MODAL ═══ -->
+<div class="modal-overlay" id="loginModal" onclick="closeModal(event,'loginModal')">
+  <div class="modal-card">
+    <button class="modal-close" onclick="hideModal('loginModal')"><i data-lucide="x"></i></button>
+    <div class="modal-header">
+      <div class="logo-icon"><i data-lucide="zap"></i></div>
+      <h3>Welcome Back</h3>
+      <p>Login to your technician dashboard</p>
+    </div>
+    <form onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" required/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-icon-wrap">
+          <input type="password" id="loginPassword" placeholder="Your password" required/>
+          <i data-lucide="eye" class="toggle-pw" onclick="togglePassword('loginPassword',this)"></i>
+        </div>
+      </div>
+      <button type="submit" class="btn-primary full-width">Login</button>
+    </form>
+    <p class="form-footer">Not registered? <a href="#register" onclick="hideModal('loginModal');document.getElementById('register').scrollIntoView({behavior:'smooth'})">Register here</a></p>
+  </div>
+</div>
+
+<!-- ═══ TECH DETAIL MODAL ═══ -->
+<div class="modal-overlay" id="techModal" onclick="closeModal(event,'techModal')">
+  <div class="modal-card tech-modal-card">
+    <button class="modal-close" onclick="hideModal('techModal')"><i data-lucide="x"></i></button>
+    <div id="techModalContent"></div>
+  </div>
+</div>
+
+<!-- ═══ DASHBOARD MODAL ═══ -->
+<div class="modal-overlay" id="dashboardModal" onclick="closeModal(event,'dashboardModal')">
+  <div class="modal-card dashboard-card">
+    <button class="modal-close" onclick="hideModal('dashboardModal')"><i data-lucide="x"></i></button>
+    <div id="dashboardContent"></div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast">
+  <i data-lucide="check-circle" id="toastIcon"></i>
+  <span id="toastMsg"></span>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   OfficeHomeTechX — All JavaScript Logic
+   localStorage = JSON database simulation
+═══════════════════════════════════════════════════ */
+"use strict";
+
+// ── DATABASE ──────────────────────────────────────
+const DB_KEY = 'ohx_technicians';
+const SESSION_KEY = 'ohx_session';
+
+const SEED_TECHNICIANS = [
+  { id:'t001', name:'IRATUZI THIERRY', phone:'+250788862271', email:'comthierryiratuzi99@gmail.com', service:'Electrical/Interior Design', location:'Kigali', experience:8, bio:'Certified Graduateelectrician/interior design with 8 years of experience in residential and commercial wiring, fault diagnosis, and solar panel installation.', rating:5, photo:'http://127.0.0.1:5500/images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t002', name:'BYIRINGIRO EDison', phone:'+250 789 264 987', email:'byiringiroedison250@gmail.com', service:'Interior Design/FIXING', location:'Kigali', experience:6, bio:'Award-winning interior designer specialising in modern African aesthetics, space planning, and bespoke furniture sourcing.', rating:5, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t003', name:'IBYIKORA Adolphe', phone:'+250788233287', email:'hometekx@gmail.com', service:'IT SUPPORT', location:'Kigali', experience:5, bio:'Professional CCTV and security systems installer. Experienced with IP cameras, DVR/NVR systems, and remote monitoring setup', rating:4, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t004', name:'TUYIZERE Samuel', phone:'+250 780279448', email:'samtuyizere@example.com', service:'IT Support', location:'Kigali', experience:4, bio:'IT specialist providing hardware repairs, software installation, networking setup, and cybersecurity solutions.', rating:5, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t005', name:'Patrick Habimana', phone:'+250 788 567 890', email:'patrick@example.com', service:'CCTV Installation', location:'Rubavu', experience:7, bio:'Professional CCTV and security systems installer. Experienced with IP cameras, DVR/NVR systems, and remote monitoring setup.', rating:4, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t006', name:'Diane Ingabire', phone:'+250 788 678 901', email:'diane@example.com', service:'Network Installation', location:'Huye', experience:3, bio:'Network engineer specialising in LAN/WAN setup, WiFi configuration, and fibre optic cabling for homes and businesses.', rating:4, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t007', name:'Emmanuel Rugema', phone:'+250 788 789 012', email:'emmanuel@example.com', service:'Appliance Repair', location:'Kigali', experience:10, bio:'Home appliance repair technician fixing washing machines, refrigerators, microwaves, ovens, and air conditioners.', rating:5, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+  { id:'t008', name:'Solange Akimana', phone:'+250 788 890 123', email:'solange@example.com', service:'Plumbing', location:'Kigali', experience:6, bio:'Female plumber certified in water system design, boiler installation, and bathroom renovation projects.', rating:5, photo:'images/amani.jpg', password:btoa('demo1234'), verified:true },
+];
+
+const SERVICES_DATA = [
+  { icon:'droplets', title:'Plumbing', desc:'Pipe repairs, leak fixes, bathroom installations, and drainage solutions.' },
+  { icon:'zap', title:'Electrical', desc:'Wiring, solar panels, fault diagnosis, and safe electrical installations.' },
+  { icon:'layout-dashboard', title:'Interior Design', desc:'Modern interior concepts, space planning, and furniture sourcing.' },
+  { icon:'monitor', title:'IT Support', desc:'Hardware repairs, software setup, networking, and cybersecurity.' },
+  { icon:'wifi', title:'Network Installation', desc:'LAN/WAN setup, WiFi configuration, and structured cabling.' },
+  { icon:'video', title:'CCTV Installation', desc:'Security camera setup, DVR/NVR systems, and remote monitoring.' },
+  { icon:'settings', title:'Appliance Repair', desc:'Fix fridges, washing machines, microwaves, ovens, and ACs.' },
+];
+
+function getDB() {
+  try { const r = localStorage.getItem(DB_KEY); return r ? JSON.parse(r) : []; }
+  catch { return []; }
+}
+function saveDB(d) { localStorage.setItem(DB_KEY, JSON.stringify(d)); }
+function initDB() { if (!localStorage.getItem(DB_KEY)) saveDB(SEED_TECHNICIANS); }
+function getSession() { try { return JSON.parse(sessionStorage.getItem(SESSION_KEY)); } catch { return null; } }
+function setSession(t) { sessionStorage.setItem(SESSION_KEY, JSON.stringify(t)); }
+function clearSession() { sessionStorage.removeItem(SESSION_KEY); }
+
+// ── NAVBAR ────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const navLinksEl = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+  const st = document.querySelector('.scroll-top');
+  if (st) st.classList.toggle('visible', window.scrollY > 300);
+});
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinksEl.classList.toggle('open');
+});
+navLinksEl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  hamburger.classList.remove('active');
+  navLinksEl.classList.remove('open');
+}));
+
+// ── SCROLL TOP BUTTON ─────────────────────────────
+function createScrollTop() {
+  const btn = document.createElement('button');
+  btn.className = 'scroll-top'; btn.setAttribute('aria-label','Scroll to top');
+  btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>`;
+  btn.onclick = () => window.scrollTo({ top:0, behavior:'smooth' });
+  document.body.appendChild(btn);
+}
+
+// ── HERO SEARCH ───────────────────────────────────
+const SERVICE_NAMES = SERVICES_DATA.map(s => s.title);
+const heroInput = document.getElementById('heroSearch');
+const suggestionsBox = document.getElementById('searchSuggestions');
+
+heroInput?.addEventListener('input', () => {
+  const val = heroInput.value.trim().toLowerCase();
+  suggestionsBox.innerHTML = '';
+  if (!val) { suggestionsBox.classList.remove('active'); return; }
+  const matches = SERVICE_NAMES.filter(s => s.toLowerCase().includes(val));
+  if (!matches.length) { suggestionsBox.classList.remove('active'); return; }
+  matches.forEach(s => {
+    const item = document.createElement('div');
+    item.className = 'suggestion-item';
+    item.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>${s}`;
+    item.onclick = () => { heroInput.value = s; suggestionsBox.classList.remove('active'); handleHeroSearch(); };
+    suggestionsBox.appendChild(item);
+  });
+  suggestionsBox.classList.add('active');
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.hero-search')) suggestionsBox.classList.remove('active');
+});
+function handleHeroSearch() {
+  const val = heroInput?.value.trim();
+  document.getElementById('technicians').scrollIntoView({ behavior:'smooth' });
+  setTimeout(() => {
+    const df = document.getElementById('dirFilter');
+    const ds = document.getElementById('dirSearch');
+    const match = SERVICE_NAMES.find(s => s.toLowerCase() === val?.toLowerCase());
+    if (match && df) { df.value = match; }
+    else if (ds && val) { ds.value = val; }
+    filterTechnicians();
+  }, 600);
+}
+
+// ── RENDER SERVICES ───────────────────────────────
+function renderServices() {
+  const grid = document.getElementById('servicesGrid');
+  if (!grid) return;
+  grid.innerHTML = SERVICES_DATA.map(s => `
+    <div class="service-card" onclick="filterByService('${s.title}')">
+      <div class="service-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-lucide="${s.icon}"></svg>
+      </div>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+      <button class="btn-outline">View Technicians</button>
+    </div>`).join('');
+  lucide.createIcons();
+}
+function filterByService(service) {
+  const df = document.getElementById('dirFilter');
+  if (df) { df.value = service; filterTechnicians(); }
+  document.getElementById('technicians').scrollIntoView({ behavior:'smooth' });
+}
+
+// ── RENDER TECHNICIAN CARDS ───────────────────────
+function starsHTML(r) { const f=Math.round(r); return '★'.repeat(f)+'☆'.repeat(5-f); }
+function getInitials(n) { return n.split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2); }
+function avatarHTML(tech, mode) {
+  const cls = mode==='modal' ? 'tech-modal-avatar' : 'tech-avatar';
+  const phCls = mode==='modal' ? 'tech-modal-avatar-ph' : 'tech-avatar-placeholder';
+  if (tech.photo && (tech.photo.startsWith('http')||tech.photo.startsWith('data:'))) {
+    return `<img src="${tech.photo}" alt="${tech.name}" class="${cls}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="${phCls}" style="display:none">${getInitials(tech.name)}</div>`;
+  }
+  return `<div class="${phCls}">${getInitials(tech.name)}</div>`;
+}
+
+function renderTechCard(tech, delay) {
+  return `
+  <div class="tech-card" style="animation-delay:${delay}ms">
+    <div class="tech-card-header">
+      ${avatarHTML(tech)}
+      <div class="tech-header-info">
+        <h3>${tech.name}</h3>
+        <span class="tech-badge">${tech.service}</span><br/>
+        <div class="tech-rating">
+          <span class="stars">${starsHTML(tech.rating)}</span>
+          <span class="rating-num">${tech.rating}.0</span>
+        </div>
+      </div>
+      ${tech.verified?`<div class="tech-verified" title="Verified"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></div>`:''}
+    </div>
+    <div class="tech-card-body">
+      <div class="tech-meta">
+        <div class="tech-meta-row">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          ${tech.location}
+        </div>
+        <div class="tech-meta-row">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.77 3.28 2 2 0 0 1 3.73 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 5.99 5.99l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          ${tech.phone}
+        </div>
+        <div class="tech-meta-row">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          ${tech.experience} year${tech.experience!==1?'s':''} experience
+        </div>
+      </div>
+    </div>
+    <div class="tech-card-actions">
+      <button class="btn-primary" onclick="openTechModal('${tech.id}')">View Profile</button>
+      <button class="btn-outline" onclick="callTech('${tech.phone}')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.77 3.28 2 2 0 0 1 3.73 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 5.99 5.99l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        Call
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderTechnicians(list) {
+  const grid = document.getElementById('techniciansGrid');
+  const no = document.getElementById('noResults');
+  if (!grid) return;
+  if (!list.length) { grid.innerHTML=''; no.style.display='block'; return; }
+  no.style.display = 'none';
+  grid.innerHTML = list.map((t,i) => renderTechCard(t, i*60)).join('');
+}
+function loadTechnicians() { renderTechnicians(getDB()); }
+
+// ── FILTER ────────────────────────────────────────
+function filterTechnicians() {
+  const search = document.getElementById('dirSearch')?.value.trim().toLowerCase()||'';
+  const service = document.getElementById('dirFilter')?.value||'';
+  const location = document.getElementById('dirLocation')?.value||'';
+  const filtered = getDB().filter(t => {
+    const ms = !search || t.name.toLowerCase().includes(search) || t.service.toLowerCase().includes(search);
+    const mv = !service || t.service===service;
+    const ml = !location || t.location.toLowerCase().includes(location.toLowerCase());
+    return ms && mv && ml;
+  });
+  renderTechnicians(filtered);
+}
+
+// ── TECH DETAIL MODAL ─────────────────────────────
+function openTechModal(id) {
+  const tech = getDB().find(t => t.id===id);
+  if (!tech) return;
+  document.getElementById('techModalContent').innerHTML = `
+    <div class="tech-modal-header">
+      ${avatarHTML(tech,'modal')}
+      <div>
+        <div class="tech-modal-name">${tech.name}</div>
+        <span class="tech-modal-service">${tech.service}</span>
+        <div class="tech-modal-stars">${starsHTML(tech.rating)} <span style="font-size:.85rem;color:rgba(255,255,255,.7)">${tech.rating}.0/5</span></div>
+      </div>
+    </div>
+    <div class="tech-modal-body">
+      <div class="tech-detail-grid">
+        <div class="tech-detail-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div><span>Location</span><span>${tech.location}</span></div>
+        </div>
+        <div class="tech-detail-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.77 3.28 2 2 0 0 1 3.73 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 5.99 5.99l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          <div><span>Phone</span><span>${tech.phone}</span></div>
+        </div>
+        <div class="tech-detail-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><span>Experience</span><span>${tech.experience} years</span></div>
+        </div>
+        <div class="tech-detail-item">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div><span>Email</span><span style="word-break:break-all">${tech.email}</span></div>
+        </div>
+      </div>
+      ${tech.bio?`<div class="tech-bio">${tech.bio}</div>`:''}
+      <div class="tech-contact-btns">
+        <button class="btn-primary" onclick="callTech('${tech.phone}')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.77 3.28 2 2 0 0 1 3.73 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 5.99 5.99l1.09-1.09a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          Call Technician
+        </button>
+        <button class="btn-green" onclick="whatsappTech('${tech.phone}','${tech.name.replace(/'/g,"\\'")}')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+          Send WhatsApp
+        </button>
+      </div>
+    </div>`;
+  showModal('techModal');
+}
+function callTech(phone) { window.location.href=`tel:${phone.replace(/\s/g,'')}`; }
+function whatsappTech(phone, name) {
+  const c = phone.replace(/\D/g,'');
+  const m = encodeURIComponent(`Hello ${name}, I found your profile on OfficeHomeTechX and would like to hire you.`);
+  window.open(`https://wa.me/${c}?text=${m}`,'_blank');
+}
+
+// ── REGISTRATION ──────────────────────────────────
+function previewPhoto(event) {
+  const file = event.target.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const p = document.getElementById('photoPreview');
+    p.src = e.target.result; p.style.display = 'block';
+    document.getElementById('photoUploadArea').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+function handleRegister(event) {
+  event.preventDefault();
+  const name=document.getElementById('regName').value.trim();
+  const phone=document.getElementById('regPhone').value.trim();
+  const email=document.getElementById('regEmail').value.trim().toLowerCase();
+  const service=document.getElementById('regService').value;
+  const location=document.getElementById('regLocation').value.trim();
+  const exp=parseInt(document.getElementById('regExp').value)||0;
+  const bio=document.getElementById('regBio').value.trim();
+  const pw=document.getElementById('regPassword').value;
+  const cpw=document.getElementById('regConfirmPw').value;
+  const prev=document.getElementById('photoPreview');
+  const photoSrc=(prev.style.display!=='none' && prev.src && prev.src!==window.location.href)?prev.src:'';
+
+  if (pw!==cpw){showToast('Passwords do not match!','error');return;}
+  if (pw.length<6){showToast('Password must be at least 6 characters.','error');return;}
+  const db=getDB();
+  if (db.find(t=>t.email===email)){showToast('This email is already registered.','error');return;}
+
+  const newTech={
+    id:'t'+Date.now(), name, phone, email, service, location,
+    experience:exp, bio, rating:4, photo:photoSrc,
+    password:btoa(pw), verified:false
+  };
+  db.push(newTech); saveDB(db); setSession(newTech);
+  showToast(`Welcome, ${name}! Your profile is now live.`,'success');
+  document.getElementById('registerForm').reset();
+  prev.style.display='none';
+  document.getElementById('photoUploadArea').style.display='flex';
+  loadTechnicians(); updateNavForSession();
+  setTimeout(()=>document.getElementById('technicians').scrollIntoView({behavior:'smooth'}),800);
+}
+
+// ── LOGIN ─────────────────────────────────────────
+function handleLogin(event) {
+  event.preventDefault();
+  const email=document.getElementById('loginEmail').value.trim().toLowerCase();
+  const pw=document.getElementById('loginPassword').value;
+  const tech=getDB().find(t=>t.email===email);
+  if (!tech){showToast('No account found with this email.','error');return;}
+  if (tech.password!==btoa(pw)){showToast('Incorrect password.','error');return;}
+  setSession(tech); hideModal('loginModal');
+  showToast(`Welcome back, ${tech.name}!`,'success');
+  updateNavForSession();
+  setTimeout(()=>openDashboard(),600);
+}
+function showLoginModal(){ showModal('loginModal'); }
+
+// ── DASHBOARD ─────────────────────────────────────
+function openDashboard(){
+  const s=getSession(); if(!s){showModal('loginModal');return;}
+  renderDashboard(s,'profile'); showModal('dashboardModal');
+}
+function renderDashboard(tech, tab){
+  const avHTML = (tech.photo&&tech.photo.length>5&&tech.photo!==window.location.href)
+    ? `<img src="${tech.photo}" alt="${tech.name}" style="width:70px;height:70px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.4);flex-shrink:0">`
+    : `<div class="avatar-ph">${getInitials(tech.name)}</div>`;
+  let tabContent='';
+  if (tab==='profile') {
+    tabContent=`
+      <div class="profile-preview-card">${avHTML}<div><h3>${tech.name}</h3><p>${tech.service} · ${tech.location}</p><div style="color:#fbbf24;font-size:.9rem;margin-top:4px">${starsHTML(tech.rating)} ${tech.rating}.0</div></div></div>
+      <div class="dash-section">
+        <h4>Profile Details</h4>
+        ${ir('Service',tech.service)}${ir('Location',tech.location)}${ir('Phone',tech.phone)}${ir('Email',tech.email)}${ir('Experience',tech.experience+' years')}${ir('Status',tech.verified?'✅ Verified':'⏳ Pending Verification')}
+        ${tech.bio?`<div class="tech-bio" style="margin-top:14px">${tech.bio}</div>`:''}
+      </div>`;
+  } else {
+    tabContent=`
+      <div class="dash-section">
+        <h4>Edit Your Profile</h4>
+        ${ef('Full Name','editName','text',tech.name)}
+        ${ef('Phone Number','editPhone','tel',tech.phone)}
+        ${ef('Location','editLocation','text',tech.location)}
+        <div class="form-group">
+          <label style="font-size:.82rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em">Service Type</label>
+          <select id="editService" style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:10px 14px;width:100%;font-size:.92rem">
+            ${['Plumbing','Electrical','Interior Design','IT Support','Network Installation','CCTV Installation','Appliance Repair'].map(s=>`<option${s===tech.service?' selected':''}>${s}</option>`).join('')}
+          </select>
+        </div>
+        <div class="form-group">
+          <label style="font-size:.82rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em">Bio</label>
+          <textarea id="editBio" rows="3" style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:10px 14px;width:100%;font-size:.92rem;resize:vertical">${tech.bio||''}</textarea>
+        </div>
+        <div class="form-group">
+          <label style="font-size:.82rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em">Update Profile Photo</label>
+          <div class="photo-upload" onclick="document.getElementById('editPhoto').click()" style="margin-top:4px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+            <span>Upload new photo</span>
+            <input type="file" id="editPhoto" accept="image/*" style="display:none" onchange="previewEditPhoto(event)">
+          </div>
+          <img id="editPhotoPreview" style="display:none;width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--primary);margin-top:8px">
+        </div>
+        <button class="btn-primary full-width" onclick="saveProfileEdits('${tech.id}')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Changes
+        </button>
+      </div>`;
+  }
+  document.getElementById('dashboardContent').innerHTML=`
+    <div style="margin-bottom:8px"><div style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:4px">My Dashboard</div><div style="font-size:.85rem;color:var(--text-muted)">Manage your technician profile</div></div>
+    <div class="dash-nav">
+      <div class="dash-tab ${tab==='profile'?'active':''}" onclick="renderDashboard(getSession(),'profile')">My Profile</div>
+      <div class="dash-tab ${tab==='edit'?'active':''}" onclick="renderDashboard(getSession(),'edit')">Edit Profile</div>
+    </div>
+    ${tabContent}
+    <button class="logout-btn" onclick="logout()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline;margin-right:6px"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      Logout
+    </button>`;
+}
+function ir(label,val){return `<div class="info-row"><span class="info-label">${label}</span><span class="info-value">${val}</span></div>`;}
+function ef(label,id,type,val){return `<div class="form-group"><label style="font-size:.82rem;font-weight:600;color:var(--text-secondary);text-transform:uppercase;letter-spacing:.04em">${label}</label><input type="${type}" id="${id}" value="${val}" style="background:var(--bg);border:1.5px solid var(--border);border-radius:var(--radius-md);padding:10px 14px;width:100%;font-size:.92rem"></div>`;}
+function previewEditPhoto(event){
+  const file=event.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{const p=document.getElementById('editPhotoPreview');p.src=e.target.result;p.style.display='block';};
+  reader.readAsDataURL(file);
+}
+function saveProfileEdits(id){
+  const db=getDB(); const idx=db.findIndex(t=>t.id===id);
+  if(idx===-1){showToast('Profile not found.','error');return;}
+  db[idx].name=document.getElementById('editName')?.value.trim()||db[idx].name;
+  db[idx].phone=document.getElementById('editPhone')?.value.trim()||db[idx].phone;
+  db[idx].location=document.getElementById('editLocation')?.value.trim()||db[idx].location;
+  db[idx].service=document.getElementById('editService')?.value||db[idx].service;
+  db[idx].bio=document.getElementById('editBio')?.value.trim()||db[idx].bio;
+  const ep=document.getElementById('editPhotoPreview');
+  if(ep&&ep.src&&ep.style.display!=='none') db[idx].photo=ep.src;
+  saveDB(db); setSession(db[idx]);
+  showToast('Profile updated!','success');
+  renderDashboard(db[idx],'profile'); loadTechnicians();
+}
+function logout(){ clearSession(); hideModal('dashboardModal'); showToast('Logged out successfully.','success'); updateNavForSession(); }
+
+// ── SESSION NAV ───────────────────────────────────
+function updateNavForSession(){
+  const s=getSession(); const btn=document.getElementById('navLoginBtn');
+  if(!btn) return;
+  if(s){ btn.textContent='Dashboard'; btn.onclick=e=>{e.preventDefault();openDashboard();}; }
+  else { btn.textContent='Login'; btn.onclick=e=>{e.preventDefault();showLoginModal();}; }
+}
+
+// ── MODALS ────────────────────────────────────────
+function showModal(id){ document.getElementById(id)?.classList.add('active'); document.body.style.overflow='hidden'; }
+function hideModal(id){ document.getElementById(id)?.classList.remove('active'); document.body.style.overflow=''; }
+function closeModal(e,id){ if(e.target===e.currentTarget) hideModal(id); }
+
+// ── TOAST ─────────────────────────────────────────
+let toastTimer;
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.className=`toast show ${type}`;
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// ── PASSWORD TOGGLE ───────────────────────────────
+function togglePassword(inputId, icon){
+  const input=document.getElementById(inputId); if(!input) return;
+  if(input.type==='password'){ input.type='text'; icon.setAttribute('data-lucide','eye-off'); }
+  else { input.type='password'; icon.setAttribute('data-lucide','eye'); }
+  lucide.createIcons();
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────
+function setupScrollReveal(){
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.service-card,.step-card').forEach(el=>{
+    el.style.opacity='0'; el.style.transform='translateY(28px)';
+    el.style.transition='opacity .5s ease, transform .5s ease'; obs.observe(el);
+  });
+}
+
+// ── INIT ──────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',()=>{
+  initDB();
+  renderServices();
+  loadTechnicians();
+  document.getElementById('year').textContent=new Date().getFullYear();
+  createScrollTop();
+  updateNavForSession();
+  if(window.lucide) lucide.createIcons();
+  requestAnimationFrame(setupScrollReveal);
+});
+</script>
+</body>
+</html>
