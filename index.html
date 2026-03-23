@@ -35,11 +35,15 @@ nav ul a{color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:50
 nav ul a:hover{color:var(--white);}
 .nav-quote{background:var(--gold);color:#000;padding:.45rem 1.1rem;border-radius:4px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;text-decoration:none;transition:opacity .2s;}
 .nav-quote:hover{opacity:.85;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;}
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,30,0.98);padding:1.5rem 2rem;z-index:199;flex-direction:column;gap:1.2rem;border-bottom:1px solid var(--border);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:.3s;display:block;}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px);}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,30,0.98);padding:1.5rem 2rem;z-index:199;flex-direction:column;gap:1.2rem;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;padding:.4rem 0;border-bottom:1px solid var(--border);}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;padding:.4rem 0;border-bottom:1px solid var(--border);transition:color .2s;}
+.mobile-menu a:hover{color:var(--white);}
 
 /* ── HERO ── */
 #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
@@ -528,8 +532,18 @@ footer{background:var(--navy);padding:3rem;border-top:1px solid var(--border);}
 </footer>
 
 <script>
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
-function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+function toggleMenu(){
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.querySelector('.hamburger');
+  menu.classList.toggle('open');
+  hamburger.classList.toggle('active');
+}
+function closeMenu(){
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.querySelector('.hamburger');
+  menu.classList.remove('open');
+  hamburger.classList.remove('active');
+}
 const reveals=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);obs.unobserve(e.target);}});},{threshold:0.08});
 reveals.forEach(r=>obs.observe(r));
