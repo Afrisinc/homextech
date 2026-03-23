@@ -104,10 +104,12 @@ footer a:hover{color:var(--white);}
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px);}
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,30,0.98);backdrop-filter:blur(16px);padding:1.5rem;z-index:199;border-bottom:1px solid var(--border);flex-direction:column;gap:1rem;}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,30,0.98);backdrop-filter:blur(16px);padding:1.5rem;z-index:150;border-bottom:1px solid var(--border);flex-direction:column;gap:1rem;max-height:calc(100vh - 70px);overflow-y:auto;}
 .mobile-menu.active{display:flex;}
 .mobile-menu a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;padding:.6rem 0;border-bottom:1px solid var(--border);transition:color .2s;}
-.mobile-menu a:hover{color:var(--white);}
+.mobile-menu a:hover,
+.mobile-menu a:focus{color:var(--white);}
+.mobile-menu a:last-child{border-bottom:none;}
 .mobile-menu .nav-btn{display:block;text-align:center;border-bottom:none;}
 
 /* ── RESPONSIVE ── */
@@ -283,7 +285,7 @@ footer a:hover{color:var(--white);}
         </div>
 
         <div class="form-group" style="background:rgba(0,198,215,.08);border:1px solid rgba(0,198,215,.2);padding:1rem;border-radius:6px;margin-bottom:1.2rem;">
-          <p style="color:var(--cyan);font-weight:600;margin:0;">📅 Program Start Date: <strong style="color:var(--white);">15 May 2026</strong></p>
+          <p style="color:var(--cyan);font-weight:600;margin:0;">📅 Program Start Date: <strong style="color:var(--white);">20 April 2026</strong></p>
           <p style="color:var(--muted);font-size:.85rem;margin:0.5rem 0 0 0;">All training programs commence on this date. Select your preferred time slot above.</p>
         </div>
 
@@ -405,7 +407,7 @@ document.getElementById('applicationForm').addEventListener('submit', async (e) 
     program: document.getElementById('program').value,
     experience: document.getElementById('experience').value,
     schedule: document.getElementById('schedule').value,
-    programStartDate: '15 May 2026',
+    programStartDate: '20 April 2026',
     organization: document.getElementById('organization').value,
     hearFrom: document.getElementById('hearFrom').value,
     motivation: document.getElementById('motivation').value,

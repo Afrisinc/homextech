@@ -40,10 +40,14 @@ nav ul a:hover{color:var(--white);}
 .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(8px,8px);}
 .hamburger.active span:nth-child(2){opacity:0;}
 .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px);}
-.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,30,0.98);padding:1.5rem 2rem;z-index:199;flex-direction:column;gap:1.2rem;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);}
+.mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(8,15,30,0.98);padding:1.5rem 2rem;z-index:150;flex-direction:column;gap:1.2rem;border-bottom:1px solid var(--border);backdrop-filter:blur(16px);max-height:calc(100vh - 70px);overflow-y:auto;}
 .mobile-menu.open{display:flex;}
-.mobile-menu a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;padding:.4rem 0;border-bottom:1px solid var(--border);transition:color .2s;}
-.mobile-menu a:hover{color:var(--white);}
+.mobile-menu a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;padding:.6rem 0;border-bottom:1px solid var(--border);transition:color .2s;}
+.mobile-menu a:hover,
+.mobile-menu a:focus{color:var(--white);}
+.mobile-menu a.nav-quote{background:var(--gold);color:#000;padding:.6rem 1.2rem;border-radius:4px;border-bottom:none;text-align:center;font-weight:700;display:block;}
+.mobile-menu a.nav-quote:hover{opacity:.85;background:var(--gold);}
+.mobile-menu a:last-child{border-bottom:none;}
 
 /* ── HERO ── */
 #hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 3rem 4rem;position:relative;overflow:hidden;}
@@ -213,6 +217,7 @@ footer{background:var(--navy);padding:3rem;border-top:1px solid var(--border);}
   <a href="#training" onclick="closeMenu()">Training</a>
   <a href="#team" onclick="closeMenu()">Team</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="training-application.html" class="nav-quote" onclick="closeMenu()" style="margin-top:.5rem;">Apply now</a>
 </div>
 
 <!-- HERO -->
@@ -544,6 +549,15 @@ function closeMenu(){
   menu.classList.remove('open');
   hamburger.classList.remove('active');
 }
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.querySelector('.hamburger');
+  const nav = document.querySelector('nav');
+  if (!nav.contains(e.target) && menu.classList.contains('open')) {
+    closeMenu();
+  }
+});
 const reveals=document.querySelectorAll('.reveal');
 const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*70);obs.unobserve(e.target);}});},{threshold:0.08});
 reveals.forEach(r=>obs.observe(r));
