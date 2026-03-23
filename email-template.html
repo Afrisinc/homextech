@@ -1,0 +1,205 @@
+<!-- EmailJS Template for Training Application -->
+<!-- Copy this into your EmailJS dashboard: Email Templates → Create Template -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 0;
+        }
+        .header {
+            background: linear-gradient(135deg, #1a4fc4 0%, #00c6d7 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px 20px;
+        }
+        .intro {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .section {
+            margin-bottom: 25px;
+        }
+        .section-title {
+            color: #1a4fc4;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #00c6d7;
+            padding-bottom: 8px;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 12px;
+        }
+        .info-label {
+            width: 35%;
+            color: #7a8ba8;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-value {
+            width: 65%;
+            color: #333;
+            font-size: 14px;
+            word-break: break-word;
+        }
+        .motivation-box {
+            background-color: #f8f9ff;
+            border-left: 4px solid #00c6d7;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .motivation-box p {
+            margin: 0;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .footer {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            font-size: 12px;
+            color: #7a8ba8;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #f5a623;
+            color: #000;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .divider {
+            border: none;
+            border-top: 1px dashed #e0e0e0;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>📋 Training Application Received</h1>
+            <p>New application submission from {{firstName}} {{lastName}}</p>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+            <div class="intro">
+                <p>Hello,</p>
+                <p>A new training program application has been submitted. Please review the details below and respond to the applicant within 24-48 hours.</p>
+            </div>
+
+            <!-- PERSONAL INFORMATION -->
+            <div class="section">
+                <div class="section-title">👤 Personal Information</div>
+                <div class="info-row">
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value">{{firstName}} {{lastName}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Email</div>
+                    <div class="info-value">{{email}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">{{phone}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Organization</div>
+                    <div class="info-value">{{organization}}</div>
+                </div>
+            </div>
+
+            <!-- PROGRAM DETAILS -->
+            <div class="section">
+                <div class="section-title">🎓 Program Details</div>
+                <div class="info-row">
+                    <div class="info-label">Program</div>
+                    <div class="info-value">{{program}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Experience Level</div>
+                    <div class="info-value">{{experience}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Preferred Start Date</div>
+                    <div class="info-value">{{startDate}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Source</div>
+                    <div class="info-value">{{hearFrom}}</div>
+                </div>
+            </div>
+
+            <!-- MOTIVATION & EXPECTATIONS -->
+            <div class="section">
+                <div class="section-title">💡 Motivation & Goals</div>
+                <p style="color: #7a8ba8; font-size: 12px; text-transform: uppercase; margin-bottom: 10px;">Why interested in this program?</p>
+                <div class="motivation-box">
+                    <p>{{motivation}}</p>
+                </div>
+                <p style="color: #7a8ba8; font-size: 12px; text-transform: uppercase; margin: 15px 0 10px 0;">What are your expectations?</p>
+                <div class="motivation-box">
+                    <p>{{expectations}}</p>
+                </div>
+            </div>
+
+            <hr class="divider">
+
+            <!-- CTA -->
+            <div style="text-align: center;">
+                <p style="color: #333; font-size: 14px; margin: 0 0 15px 0;">Review this application in your admin dashboard</p>
+                <a href="https://homextech.example.com/admin/applications" class="cta-button">View Application</a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p style="margin: 0 0 10px 0;">OfficeHomeTechX Ltd | Training Programs</p>
+            <p style="margin: 0;">Kigali, Rwanda | support@homextech.com</p>
+        </div>
+    </div>
+</body>
+</html>
