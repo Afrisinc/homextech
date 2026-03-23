@@ -1,9 +1,8 @@
 # Use a lightweight nginx image to serve static HTML
 FROM nginx:alpine
 
-# Copy HTML files to the nginx document root
-COPY index.html /usr/share/nginx/html/
-COPY OfficeHomeTechX.html /usr/share/nginx/html/
+# Copy all HTML files to the nginx document root
+COPY *.html /usr/share/nginx/html/
 
 # Copy images directory
 COPY images /usr/share/nginx/html/images/
