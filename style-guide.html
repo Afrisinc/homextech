@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OfficeHomeTechX – Style Guide & Component Library</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    .sg-section {
+      padding: var(--space-6xl) var(--space-5xl);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sg-section:nth-child(odd) {
+      background: var(--dark);
+    }
+
+    .sg-section:nth-child(even) {
+      background: var(--mid);
+    }
+
+    .sg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-3xl);
+      margin-top: var(--space-3xl);
+    }
+
+    .sg-example {
+      padding: var(--space-2xl);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .sg-label {
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-md);
+      display: block;
+    }
+
+    .sg-code {
+      background: var(--dark);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: var(--space-2xl);
+      margin-top: var(--space-2xl);
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--cyan);
+      line-height: 1.5;
+    }
+
+    .color-swatch {
+      width: 100%;
+      height: 80px;
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-md);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: flex-end;
+      padding: var(--space-md);
+      font-size: 0.75rem;
+      color: var(--white);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .sg-button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 15, 30, 0.95);
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-lg) var(--space-5xl);
+      backdrop-filter: blur(16px);
+    }
+
+    nav ul {
+      display: flex;
+      gap: var(--space-3xl);
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color var(--transition-base);
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--cyan);
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <ul>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#badges">Badges</a></li>
+    <li><a href="#cards">Cards</a></li>
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#typography">Typography</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#utilities">Utilities</a></li>
+  </ul>
+</nav>
+
+<!-- Header -->
+<section class="sg-section">
+  <h1 style="margin-bottom: var(--space-2xl);">OfficeHomeTechX – Component Library</h1>
+  <p style="color: var(--muted); max-width: 600px;">
+    A comprehensive guide to the CSS component system. Use these components and patterns
+    to build consistent, beautiful interfaces across the OfficeHomeTechX website.
+  </p>
+</section>
+
+<!-- BUTTONS SECTION -->
+<section id="buttons" class="sg-section">
+  <h2 class="section-title">Buttons</h2>
+  <p class="section-sub">Call-to-action buttons with multiple variants and sizes</p>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Primary Buttons (CTA)</h3>
+  <div class="sg-button-group">
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-primary btn-sm">Small</button>
+    <button class="btn btn-primary btn-lg">Large</button>
+  </div>
+
+  <div class="sg-code">&lt;button class="btn btn-primary"&gt;Get Started&lt;/button&gt;</div>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Secondary Buttons (Outline)</h3>
+  <div class="sg-button-group">
+    <button class="btn btn-secondary">Secondary</button>
+    <button class="btn btn-secondary btn-sm">Small</button>
+    <button class="btn btn-secondary btn-lg">Large</button>
+  </div>
+
+  <div class="sg-code">&lt;button class="btn btn-secondary"&gt;Learn More&lt;/button&gt;</div>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Ghost Buttons</h3>
+  <div class="sg-button-group">
+    <button class="btn btn-ghost">Ghost Button</button>
+    <button class="btn btn-ghost btn-sm">Small</button>
+    <button class="btn btn-ghost btn-lg">Large</button>
+  </div>
+
+  <div class="sg-code">&lt;button class="btn btn-ghost"&gt;View Details&lt;/button&gt;</div>
+</section>
+
+<!-- BADGES SECTION -->
+<section id="badges" class="sg-section">
+  <h2 class="section-title">Badges & Tags</h2>
+  <p class="section-sub">Status indicators and category labels</p>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Badge Variants</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: var(--space-3xl);">
+    <span class="badge badge-cyan">Cyan Badge</span>
+    <span class="badge badge-gold">Gold Badge</span>
+    <span class="badge badge-blue">Blue Badge</span>
+    <span class="badge badge-filled">Filled</span>
+  </div>
+
+  <div class="sg-code">&lt;span class="badge badge-cyan"&gt;New Feature&lt;/span&gt;</div>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Tags</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: var(--space-2xl);">
+    <span class="tag">React</span>
+    <span class="tag tag-blue">Python</span>
+    <span class="tag tag-gold">Featured</span>
+  </div>
+
+  <div class="sg-code">&lt;span class="tag"&gt;React&lt;/span&gt;</div>
+</section>
+
+<!-- CARDS SECTION -->
+<section id="cards" class="sg-section">
+  <h2 class="section-title">Cards</h2>
+  <p class="section-sub">Content containers for features, services, and modules</p>
+
+  <div class="sg-grid">
+    <div class="card">
+      <div class="card-icon">🚀</div>
+      <h3 class="card-title">Feature Card</h3>
+      <p class="card-text">Standard card with icon and description</p>
+      <a href="#" class="card-link">Read More →</a>
+    </div>
+
+    <div class="card">
+      <h3 class="card-title">Simple Card</h3>
+      <p class="card-text">Without icon, minimal styling</p>
+      <a href="#" class="card-link">Explore →</a>
+    </div>
+
+    <div class="card stat-card">
+      <div class="stat-number">500+</div>
+      <div class="stat-label">Students Trained</div>
+    </div>
+  </div>
+
+  <div class="sg-code">&lt;div class="card"&gt;
+  &lt;div class="card-icon"&gt;🚀&lt;/div&gt;
+  &lt;h3 class="card-title"&gt;Title&lt;/h3&gt;
+  &lt;p class="card-text"&gt;Description&lt;/p&gt;
+&lt;/div&gt;</div>
+</section>
+
+<!-- COLORS SECTION -->
+<section id="colors" class="sg-section">
+  <h2 class="section-title">Color Palette</h2>
+  <p class="section-sub">Brand colors and semantic color variables</p>
+
+  <div class="sg-grid">
+    <div>
+      <span class="sg-label">Primary Navy</span>
+      <div class="color-swatch" style="background: var(--navy);">#0d1b3e</div>
+    </div>
+    <div>
+      <span class="sg-label">Primary Blue</span>
+      <div class="color-swatch" style="background: var(--blue);">#1a4fc4</div>
+    </div>
+    <div>
+      <span class="sg-label">Accent Cyan</span>
+      <div class="color-swatch" style="background: var(--cyan);">#00c6d7</div>
+    </div>
+    <div>
+      <span class="sg-label">Call-to-Action Gold</span>
+      <div class="color-swatch" style="background: var(--gold); color: #000;">
+        <span style="text-shadow: none;">#f5a623</span>
+      </div>
+    </div>
+    <div>
+      <span class="sg-label">White</span>
+      <div class="color-swatch" style="background: var(--white); color: var(--dark); text-shadow: none;">#f8f9ff</div>
+    </div>
+    <div>
+      <span class="sg-label">Dark Background</span>
+      <div class="color-swatch" style="background: var(--dark);">#080f1e</div>
+    </div>
+    <div>
+      <span class="sg-label">Mid Background</span>
+      <div class="color-swatch" style="background: var(--mid);">#111827</div>
+    </div>
+    <div>
+      <span class="sg-label">Card Background</span>
+      <div class="color-swatch" style="background: var(--card);">#151f35</div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY SECTION -->
+<section id="typography" class="sg-section">
+  <h2 class="section-title">Typography</h2>
+  <p class="section-sub">Font family and sizing scale</p>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Headings (Poppins)</h3>
+  <div>
+    <h1 style="margin-bottom: var(--space-2xl);">Heading 1</h1>
+    <h2 style="margin-bottom: var(--space-2xl);">Heading 2</h2>
+    <h3 style="margin-bottom: var(--space-2xl);">Heading 3</h3>
+    <h4 style="margin-bottom: var(--space-2xl);">Heading 4</h4>
+  </div>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Body Text (DM Sans)</h3>
+  <p style="margin-bottom: var(--space-2xl);">
+    Regular body text for paragraphs and descriptions. The quick brown fox jumps over the lazy dog.
+    This font is optimized for readability at all sizes.
+  </p>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Font Weights</h3>
+  <div style="display: flex; flex-direction: column; gap: var(--space-2xl);">
+    <p style="font-weight: 300;">Light (300) – Secondary text</p>
+    <p style="font-weight: 400;">Normal (400) – Body text</p>
+    <p style="font-weight: 500;">Medium (500) – Emphasis</p>
+    <p style="font-weight: 700;">Bold (700) – Headings</p>
+    <p style="font-weight: 800;">Extra Bold (800) – Display text</p>
+  </div>
+</section>
+
+<!-- FORMS SECTION -->
+<section id="forms" class="sg-section">
+  <h2 class="section-title">Form Elements</h2>
+  <p class="section-sub">Input fields, textareas, and form structure</p>
+
+  <div style="max-width: 400px; margin-top: var(--space-3xl);">
+    <div class="form-group">
+      <label for="demo-email">Email Address</label>
+      <input type="email" id="demo-email" placeholder="name@example.com">
+    </div>
+
+    <div class="form-group">
+      <label for="demo-name">Full Name</label>
+      <input type="text" id="demo-name" placeholder="John Doe">
+    </div>
+
+    <div class="form-group">
+      <label for="demo-message">Message</label>
+      <textarea id="demo-message" placeholder="Your message here..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="demo-select">Select Option</label>
+      <select id="demo-select">
+        <option>Choose an option</option>
+        <option>Option 1</option>
+        <option>Option 2</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary w-full">Submit Form</button>
+  </div>
+
+  <div class="sg-code">&lt;div class="form-group"&gt;
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email"&gt;
+&lt;/div&gt;</div>
+</section>
+
+<!-- UTILITIES SECTION -->
+<section id="utilities" class="sg-section">
+  <h2 class="section-title">Utility Classes</h2>
+  <p class="section-sub">Single-purpose classes for rapid styling</p>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Layout Utilities</h3>
+  <div class="sg-example">
+    <div class="flex flex-center gap-3" style="background: rgba(0, 198, 215, 0.1); padding: var(--space-3xl); border-radius: var(--radius-md);">
+      <span>flex-center</span>
+    </div>
+  </div>
+  <div class="sg-code">&lt;div class="flex flex-center gap-3"&gt;...&lt;/div&gt;</div>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Spacing Examples</h3>
+  <div style="display: flex; gap: var(--space-2xl);">
+    <div style="background: var(--card); padding: var(--space-2xl); border-radius: var(--radius-md);">
+      <code style="color: var(--cyan);">p-4 (padding: 1rem)</code>
+    </div>
+    <div style="background: var(--card); padding: var(--space-4xl); border-radius: var(--radius-md);">
+      <code style="color: var(--cyan);">p-6 (padding: 2.5rem)</code>
+    </div>
+  </div>
+
+  <h3 style="margin-top: var(--space-4xl); margin-bottom: var(--space-2xl); font-size: 1.1rem;">Text Utilities</h3>
+  <div style="display: flex; flex-direction: column; gap: var(--space-2xl);">
+    <p class="text-sm">text-sm – Small text</p>
+    <p class="text-lg">text-lg – Large text</p>
+    <p class="font-bold">font-bold – Bold weight</p>
+    <p class="text-cyan">text-cyan – Cyan color</p>
+    <p class="text-center">text-center – Centered</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="padding: var(--space-6xl) var(--space-5xl); border-top: 1px solid var(--border); text-align: center;">
+  <p style="color: var(--muted); font-size: 0.9rem;">
+    OfficeHomeTechX Style Guide • CSS Component System v1.0<br>
+    <a href="css/README.md" style="color: var(--cyan); text-decoration: underline;">View Full Documentation →</a>
+  </p>
+</footer>
+
+<script>
+  // Smooth scroll navigation
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Highlight active nav item
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').includes(current)) {
+        link.classList.add('active');
+      }
+    });
+  });
+
+  // Initialize Lucide icons
+  lucide.createIcons();
+</script>
+
+</body>
+</html>

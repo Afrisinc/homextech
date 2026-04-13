@@ -1,0 +1,113 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM VARIABLES
+   Premium Tech Aesthetic – Clean, Precise, Trustworthy
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── COLOR PALETTE ── */
+  --navy: #0d1b3e;
+  --blue: #1a4fc4;
+  --cyan: #00c6d7;
+  --gold: #f5a623;
+  --white: #f8f9ff;
+
+  /* ── SEMANTIC COLORS ── */
+  --dark: #080f1e;
+  --mid: #111827;
+  --card: #151f35;
+  --muted: #7a8ba8;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-light: rgba(255, 255, 255, 0.12);
+  --overlay-dark: rgba(8, 15, 30, 0.92);
+
+  /* ── ACCENT PALETTE ── */
+  --accent-blue: rgba(26, 79, 196, 0.18);
+  --accent-cyan: rgba(0, 198, 215, 0.06);
+  --accent-cyan-light: rgba(0, 198, 215, 0.1);
+  --accent-cyan-border: rgba(0, 198, 215, 0.25);
+  --accent-gold-light: rgba(245, 166, 35, 0.1);
+
+  /* ── TYPOGRAPHY ── */
+  --font-display: 'Poppins', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'Courier New', monospace;
+
+  --fs-xs: 0.7rem;
+  --fs-sm: 0.75rem;
+  --fs-base: 0.9rem;
+  --fs-md: 0.95rem;
+  --fs-lg: 1rem;
+  --fs-xl: 1.2rem;
+  --fs-2xl: 1.6rem;
+  --fs-3xl: 1.8rem;
+  --fs-4xl: 2.4rem;
+  --fs-5xl: clamp(2.4rem, 4.5vw, 4rem);
+
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  --lh-tight: 1.05;
+  --lh-snug: 1.1;
+  --lh-normal: 1.6;
+  --lh-relaxed: 1.75;
+
+  /* ── SPACING SYSTEM (8px base) ── */
+  --space-xs: 0.35rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.2rem;
+  --space-2xl: 1.5rem;
+  --space-3xl: 2rem;
+  --space-4xl: 2.5rem;
+  --space-5xl: 3rem;
+  --space-6xl: 4rem;
+
+  /* ── RADIUS ── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  /* ── SHADOWS ── */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.4);
+  --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 32px rgba(0, 198, 215, 0.15);
+
+  /* ── TRANSITIONS ── */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ── Z-INDEXES ── */
+  --z-dropdown: 100;
+  --z-modal: 150;
+  --z-mobile-menu: 150;
+  --z-navbar: 200;
+  --z-fixed: 999;
+
+  /* ── LAYOUT ── */
+  --nav-height: 70px;
+}
+
+/* ── DARK MODE (default) ── */
+body {
+  color-scheme: dark;
+}
+
+/* Optional: Light mode support for future expansion */
+@media (prefers-color-scheme: light) {
+  :root {
+    --dark: #f8f9ff;
+    --mid: #f0f2f8;
+    --card: #e8ecf4;
+    --white: #0d1b3e;
+  }
+}

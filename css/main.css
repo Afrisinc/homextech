@@ -1,0 +1,444 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   MAIN STYLESHEET
+   CSS COMPONENT SYSTEM FOR OFFICEHOMETECHX
+
+   Import order:
+   1. Variables & Design Tokens
+   2. Base Styles & Typography
+   3. Animations & Keyframes
+   4. Component Library
+   5. Section Layouts
+   6. Utility Classes
+
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── STEP 1: VARIABLES & DESIGN TOKENS ── */
+@import url('variables.css');
+
+/* ── STEP 2: BASE STYLES ── */
+@import url('base.css');
+
+/* ── STEP 3: ANIMATIONS ── */
+@import url('animations.css');
+
+/* ── STEP 4: COMPONENTS ── */
+@import url('components.css');
+
+/* ── STEP 5: SECTION LAYOUTS ── */
+@import url('sections.css');
+
+/* ── STEP 6: UTILITIES ── */
+@import url('utilities.css');
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ADDITIONAL GLOBAL STYLES & FINE-TUNING
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── FOCUS STATE FOR KEYBOARD NAVIGATION ── */
+*:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+/* ── SMOOTH TRANSITIONS FOR ALL INTERACTIVE ELEMENTS ── */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all var(--transition-base);
+}
+
+/* ── MEDIA QUERIES FOR RESPONSIVE DESIGN ── */
+
+/* Tablets & Small Laptops (max-width 1024px) */
+/* ════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS — Desktop to Mobile
+   ════════════════════════════════════════════════════════════════ */
+
+/* TABLET LANDSCAPE (1024px and below) */
+@media (max-width: 1024px) {
+  #hero {
+    grid-template-columns: 1fr;
+    padding: 6rem var(--space-5xl) var(--space-4xl);
+    min-height: auto;
+  }
+
+  .hero-img-wrap {
+    padding-left: 0;
+    margin-top: var(--space-3xl);
+  }
+
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4xl);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-3xl);
+  }
+}
+
+/* TABLET PORTRAIT (768px and below) */
+@media (max-width: 768px) {
+  section {
+    padding: var(--space-4xl) var(--space-3xl);
+  }
+
+  #hero {
+    padding: 5rem var(--space-3xl) var(--space-3xl);
+    min-height: auto;
+  }
+
+  .hero-badge {
+    font-size: var(--fs-xs);
+  }
+
+  .hero-title {
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .hero-btns {
+    gap: var(--space-lg);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .about-kpis,
+  .services-grid,
+  .training-grid,
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .contact-info-item {
+    gap: var(--space-2xl);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  /* NAV RESPONSIVE */
+  nav {
+    padding: var(--space-lg) var(--space-3xl);
+  }
+
+  nav ul {
+    display: none !important;
+  }
+
+  .nav-technicians {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    top: calc(var(--nav-height));
+    display: flex;
+  }
+
+  /* FOOTER */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3xl);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2xl);
+  }
+}
+
+/* LARGE PHONE (640px and below) */
+@media (max-width: 640px) {
+  section {
+    padding: var(--space-3xl) var(--space-2xl);
+  }
+
+  #hero {
+    padding: 4.5rem var(--space-2xl) var(--space-2xl);
+    min-height: auto;
+  }
+
+  .hero-title {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-checks {
+    margin-bottom: var(--space-2xl);
+    gap: var(--space-md);
+  }
+
+  .hero-btns {
+    gap: var(--space-sm);
+  }
+
+  .btn {
+    padding: var(--space-md) var(--space-xl);
+    font-size: 0.8rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    margin-bottom: var(--space-xl);
+  }
+
+  .section-sub {
+    font-size: 0.85rem;
+  }
+
+  .card {
+    padding: var(--space-2xl);
+  }
+
+  .about-img img {
+    height: 300px;
+  }
+
+  /* NAV */
+  nav {
+    padding: var(--space-md) var(--space-2xl);
+  }
+
+  .logo-text {
+    font-size: 0.85rem;
+  }
+
+  .mobile-menu {
+    top: calc(var(--nav-height));
+  }
+
+  /* FOOTER */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .footer-section h4 {
+    font-size: 0.85rem;
+  }
+
+  .footer-section a {
+    font-size: 0.8rem;
+  }
+}
+
+/* SMALL PHONE (480px and below) */
+@media (max-width: 480px) {
+  section {
+    padding: var(--space-2xl);
+  }
+
+  #hero {
+    padding: 4rem var(--space-lg) var(--space-lg);
+    min-height: auto;
+  }
+
+  .hero-badge {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.65rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+  }
+
+  .hero-checks {
+    margin-bottom: var(--space-xl);
+    gap: var(--space-sm);
+  }
+
+  .hero-checks li {
+    font-size: 0.8rem;
+    gap: var(--space-sm);
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .hero-btns .btn {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    font-size: 0.75rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .hero-stat {
+    padding: var(--space-lg);
+  }
+
+  .hero-stat .num {
+    font-size: var(--fs-xl);
+    margin-bottom: var(--space-xs);
+  }
+
+  .hero-stat .lbl {
+    font-size: 0.7rem;
+  }
+
+  .btn {
+    width: 100%;
+    padding: var(--space-md) var(--space-lg);
+    font-size: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+
+  .card {
+    padding: var(--space-xl);
+  }
+
+  .about-img img {
+    height: 250px;
+  }
+
+  /* NAV */
+  nav {
+    padding: var(--space-md) var(--space-lg);
+  }
+
+  nav img {
+    height: 35px !important;
+  }
+
+  /* FOOTER */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .footer-brand,
+  .footer-col {
+    gap: var(--space-lg);
+  }
+
+  .footer-section h4 {
+    font-size: 0.75rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .footer-section a {
+    font-size: 0.75rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+  }
+
+  /* UTILITY GRIDS */
+  .grid-cols-2,
+  .grid-cols-3,
+  .grid-cols-4 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DARK MODE PREFERENCE (System-level)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PRINT STYLES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  nav,
+  footer,
+  .btn-outline,
+  .mobile-menu {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY & PERFORMANCE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: more) {
+  :root {
+    --border: rgba(255, 255, 255, 0.15);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
