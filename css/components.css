@@ -1,0 +1,425 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   COMPONENT LIBRARY
+   Reusable, composable UI components with variants
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BUTTONS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  padding: var(--space-lg) var(--space-2xl);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── PRIMARY VARIANT (Gold) ── */
+.btn-primary,
+.btn-gold {
+  background: var(--gold);
+  color: #000;
+}
+
+.btn-primary:hover:not(:disabled),
+.btn-gold:hover:not(:disabled) {
+  transform: translateY(-2px);
+  opacity: 0.9;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active,
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+/* ── SECONDARY VARIANT (Outline) ── */
+.btn-secondary,
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.btn-secondary:hover:not(:disabled),
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--cyan);
+  background: var(--accent-cyan);
+}
+
+/* ── TERTIARY VARIANT (Ghost) ── */
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  color: var(--cyan);
+  background: rgba(0, 198, 215, 0.08);
+}
+
+/* ── SIZE VARIANTS ── */
+.btn-sm {
+  padding: var(--space-sm) var(--space-lg);
+  font-size: 0.75rem;
+}
+
+.btn-lg {
+  padding: var(--space-xl) var(--space-3xl);
+  font-size: 0.95rem;
+  gap: var(--space-lg);
+}
+
+/* ── ICON ONLY ── */
+.btn-icon {
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  min-width: auto;
+  aspect-ratio: 1;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   BADGES & PILLS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all var(--transition-base);
+}
+
+/* ── CYAN BADGE (default) ── */
+.badge,
+.badge-cyan {
+  background: var(--accent-cyan-light);
+  border: 1px solid var(--accent-cyan-border);
+  color: var(--cyan);
+}
+
+.badge::before,
+.badge-cyan::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge:hover,
+.badge-cyan:hover {
+  background: rgba(0, 198, 215, 0.15);
+  border-color: var(--cyan);
+}
+
+/* ── GOLD BADGE ── */
+.badge-gold {
+  background: var(--accent-gold-light);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  color: var(--gold);
+}
+
+.badge-gold::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge-gold:hover {
+  background: rgba(245, 166, 35, 0.15);
+  border-color: var(--gold);
+}
+
+/* ── BLUE BADGE ── */
+.badge-blue {
+  background: rgba(26, 79, 196, 0.1);
+  border: 1px solid rgba(26, 79, 196, 0.25);
+  color: var(--blue);
+}
+
+.badge-blue::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--blue);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── FILLED BADGE ── */
+.badge-filled {
+  background: var(--cyan);
+  color: var(--dark);
+  border: none;
+  font-weight: var(--fw-semibold);
+}
+
+.badge-filled::before {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   CARDS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3xl);
+  transition: all var(--transition-base);
+  overflow: hidden;
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-cyan), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.card:hover {
+  border-color: var(--accent-cyan-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── CARD WITH ICON ── */
+.card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-cyan-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2xl);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: var(--space-md);
+  color: var(--white);
+}
+
+.card-text {
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: var(--lh-relaxed);
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-2xl);
+  color: var(--cyan);
+  font-weight: var(--fw-semibold);
+  font-size: 0.9rem;
+  transition: all var(--transition-base);
+}
+
+.card-link:hover {
+  gap: var(--space-lg);
+  color: var(--gold);
+}
+
+/* ── STAT CARD ── */
+.stat-card {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-extrabold);
+  color: var(--cyan);
+  margin-bottom: var(--space-sm);
+}
+
+.stat-label {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: var(--fw-semibold);
+}
+
+/* ── FEATURE CARD (compact) ── */
+.feature-card {
+  padding: var(--space-2xl);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   INPUTS & FORMS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.form-group {
+  margin-bottom: var(--space-2xl);
+}
+
+label {
+  display: block;
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-sm);
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  font-size: 0.95rem;
+  color: var(--white);
+  transition: all var(--transition-base);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px var(--accent-cyan);
+  background: rgba(0, 198, 215, 0.02);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-error {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  margin-top: var(--space-xs);
+  font-weight: var(--fw-semibold);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TAGS & LABELS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.tag {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-md);
+  background: var(--accent-cyan-light);
+  border: 1px solid var(--accent-cyan-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--cyan);
+  font-weight: var(--fw-semibold);
+  transition: all var(--transition-base);
+}
+
+.tag:hover {
+  background: var(--accent-cyan);
+  color: var(--dark);
+  cursor: pointer;
+}
+
+/* ── TAG VARIANTS ── */
+.tag-blue {
+  background: rgba(26, 79, 196, 0.1);
+  border-color: rgba(26, 79, 196, 0.25);
+  color: var(--blue);
+}
+
+.tag-gold {
+  background: var(--accent-gold-light);
+  border-color: rgba(245, 166, 35, 0.3);
+  color: var(--gold);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DIVIDERS & SEPARATORS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: var(--space-4xl) 0;
+}
+
+.divider-subtle {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TOOLTIPS
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + var(--space-md));
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--navy);
+  color: var(--white);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+  z-index: 10;
+  border: 1px solid var(--border-light);
+}
+
+.tooltip:hover::after {
+  opacity: 1;
+}
