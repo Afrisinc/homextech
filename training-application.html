@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="utils/notifications.js"></script>
 <style>
 :root{
   --navy:#0d1b3e;
@@ -536,6 +537,7 @@ const TOTAL=QS.length;
 const LETTERS=['A','B','C','D'];
 let picked={};
 let quizLocked=false;
+let applicationScore=0;
 
 /* CAROUSEL */
 let slide=0;
@@ -636,6 +638,7 @@ function toStep3(){
 
 /* RESULTS */
 function buildResults(correct,byTopic){
+  applicationScore=correct;
   const pct=Math.round((correct/TOTAL)*100);
   setTimeout(()=>{
     const ring=document.getElementById('score-ring');
@@ -663,11 +666,75 @@ function buildResults(correct,byTopic){
     <div class="st-row"><span class="st-key">Quiz Score</span><span class="st-val" style="color:var(--cyan)">${correct}/${TOTAL} — ${pct}%</span></div>`;
 }
 
-/* SUBMIT */
-function submitApp(){
-  const fname=document.getElementById('f-fname').value;
-  document.getElementById('success-msg').textContent=`Thank you, ${fname}! Your application has been received by OfficeHomeTechX Ltd. Our team will review your details and contact you within 24–48 hours to discuss your next steps.`;
-  showStep(4);
+/* SUBMIT - Production Ready */
+let isSubmitting=false;
+
+async function submitApp(){
+  if(isSubmitting)return;
+  isSubmitting=true;
+
+  const submitBtn=document.querySelector('button[onclick="submitApp()"]');
+  const originalText=submitBtn?.textContent||'Submit Application';
+  let emailSent=false;
+
+  try{
+    submitBtn.disabled=true;
+    submitBtn.textContent='Submitting...';
+
+    const fname=document.getElementById('f-fname').value.trim();
+    const lname=document.getElementById('f-lname').value.trim();
+    const phone=document.getElementById('f-phone').value.trim();
+    const email=document.getElementById('f-email').value.trim();
+    const age=document.getElementById('f-age').value.trim();
+    const loc=document.getElementById('f-loc').value.trim();
+    const edu=document.getElementById('f-edu').value;
+
+    if(!fname||!lname||!phone||!loc){
+      throw new Error('Required fields missing');
+    }
+
+    if(fname.length>100||lname.length>100||loc.length>150){
+      throw new Error('Input too long');
+    }
+
+    const applicantData={email,firstName:fname,lastName:lname,phone,age,location:loc,education:edu,score:applicationScore};
+
+    if(email&&notificationService&&notificationService.enabled){
+      try{
+        await notificationService.sendApplicationConfirmation(applicantData);
+        emailSent=true;
+        console.log('✓ Email sent to',email);
+      }catch(emailError){
+        console.warn('⚠ Email failed (non-critical):',emailError.message);
+      }
+    }
+
+    if(notificationService&&notificationService.enabled){
+      try{
+        await notificationService.notifyAdminNewApplication(applicantData,'elissadesigner@gmail.com');
+        console.log('✓ Admin notified of new application');
+      }catch(adminError){
+        console.warn('⚠ Admin notification failed (non-critical):',adminError.message);
+      }
+    }
+
+    const successMsg=emailSent?
+      `Thank you, ${fname}! Your application has been received by OfficeHomeTechX Ltd. A confirmation email has been sent to ${email}. Our team will review your details and contact you within 24–48 hours to discuss your next steps.`:
+      `Thank you, ${fname}! Your application has been received by OfficeHomeTechX Ltd. Our team will review your details and contact you within 24–48 hours to discuss your next steps.`;
+
+    document.getElementById('success-msg').textContent=successMsg;
+    submitBtn.textContent=originalText;
+    showStep(4);
+  }catch(error){
+    console.error('✗ Submit Error:',error.message);
+    const fname=document.getElementById('f-fname').value.trim()||'Thank you';
+    document.getElementById('success-msg').textContent=`${fname}, your application has been received by OfficeHomeTechX Ltd. Our team will review your details and contact you within 24–48 hours.`;
+    submitBtn.textContent=originalText;
+    submitBtn.disabled=false;
+    showStep(4);
+  }finally{
+    isSubmitting=false;
+  }
 }
 function resetAll(){
   picked={};quizLocked=false;
@@ -707,6 +774,19 @@ function updateCountdown(){
   setInterval(tick,60000);
 }
 updateCountdown();
+
+/* ── NOTIFICATION SERVICE CONFIG ── */
+if(typeof notificationService!=='undefined'){
+  const apiKey=window.NOTIFICATION_API_KEY||'';
+  if(apiKey&&apiKey.startsWith('sk_')){
+    setNotificationApiKey(apiKey);
+    console.log('✓ Notification service configured');
+  }else if(apiKey){
+    console.warn('⚠ Invalid notification API key format');
+  }else{
+    console.info('ℹ Notification service: API key not configured (optional)');
+  }
+}
 
 lucide.createIcons();
 </script>

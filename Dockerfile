@@ -10,6 +10,9 @@ COPY css /usr/share/nginx/html/css/
 # Copy images directory
 COPY images /usr/share/nginx/html/images/
 
+# Copy utils (notifications service)
+COPY utils /usr/share/nginx/html/utils/
+
 # Expose port 5000
 EXPOSE 5000
 

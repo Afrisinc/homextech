@@ -57,6 +57,8 @@ jobs:
 
       - name: Deploy to VPS
         uses: appleboy/ssh-action@master
+        env:
+          NOTIFICATION_API_KEY: ${{ secrets.NOTIFICATION_API_KEY }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -65,8 +67,8 @@ jobs:
           timeout: 30s
           command_timeout: 10m
 
-          # 🔐 PASS DEPLOY CREDS TO VPS
-          envs: DEPLOY_GHCR_USERNAME,DEPLOY_GHCR_TOKEN
+          # 🔐 PASS SECRETS TO VPS
+          envs: DEPLOY_GHCR_USERNAME,DEPLOY_GHCR_TOKEN,NOTIFICATION_API_KEY
           script: |
             set -e
             APP_PATH=/opt/apps/homextech
