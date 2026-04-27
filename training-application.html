@@ -401,7 +401,7 @@ nav ul a:hover{color:var(--white);}
       <div class="fld"><label>Last Name *</label><input type="text" id="f-lname" placeholder="e.g. Niyonkuru"><div class="fld-err" id="e-lname">Last name is required</div></div>
     </div>
     <div class="row">
-      <div class="fld"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+250 7XX XXX XXX"><div class="fld-err" id="e-phone">Phone number is required</div></div>
+      <div class="fld"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+250 7XX XXX XXX" pattern="^\+250\s?[7-9]\d{8}$" required><div class="fld-err" id="e-phone">Phone number must be in format: +250786725372</div></div>
       <div class="fld"><label>Email Address</label><input type="email" id="f-email" placeholder="your@email.com"></div>
     </div>
     <div class="row">
@@ -577,11 +577,27 @@ function showStep(n){
 /* VALIDATE */
 function validateInfo(){
   let ok=true;
-  [['f-fname','e-fname'],['f-lname','e-lname'],['f-phone','e-phone'],['f-loc','e-loc']].forEach(([f,e])=>{
+  const phoneRegex=/^\+250\s?[7-9]\d{8}$/;
+  const phoneInput=document.getElementById('f-phone');
+  const phoneErr=document.getElementById('e-phone');
+
+  [['f-fname','e-fname'],['f-lname','e-lname'],['f-loc','e-loc']].forEach(([f,e])=>{
     const err=document.getElementById(e);
     if(!document.getElementById(f).value.trim()){err.classList.add('show');ok=false;}
     else err.classList.remove('show');
   });
+
+  if(!phoneInput.value.trim()){
+    phoneErr.textContent='Phone number is required';
+    phoneErr.classList.add('show');
+    ok=false;
+  }else if(!phoneRegex.test(phoneInput.value.trim())){
+    phoneErr.textContent='Phone number must be in format: +250786725372';
+    phoneErr.classList.add('show');
+    ok=false;
+  }else{
+    phoneErr.classList.remove('show');
+  }
   return ok;
 }
 
@@ -699,6 +715,11 @@ async function submitApp(){
       throw new Error('Required fields missing');
     }
 
+    const phoneRegex=/^\+250\s?[7-9]\d{8}$/;
+    if(!phoneRegex.test(phone)){
+      throw new Error('Phone number must be in format: +250786725372');
+    }
+
     if(fname.length>100||lname.length>100||loc.length>150){
       throw new Error('Input too long');
     }
@@ -715,9 +736,18 @@ async function submitApp(){
       }
     }
 
+    if(phone&&notificationService&&notificationService.enabled){
+      try{
+        await notificationService.sendSMS(phone,'5bf506ef-0065-4e25-a87a-edcd39e9f027',{applicantName:`${fname} ${lname}`});
+        console.log('✓ SMS sent to',phone);
+      }catch(smsError){
+        console.warn('⚠ SMS failed (non-critical):',smsError.message);
+      }
+    }
+
     if(notificationService&&notificationService.enabled){
       try{
-        await notificationService.notifyAdminNewApplication(applicantData,'elissadesigner@gmail.com');
+        await notificationService.notifyAdminNewApplication(applicantData,'busydocu599@gmail.com');
         console.log('✓ Admin notified of new application');
       }catch(adminError){
         console.warn('⚠ Admin notification failed (non-critical):',adminError.message);
