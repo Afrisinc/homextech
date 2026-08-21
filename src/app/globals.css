@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   OfficeHomeTechX — Design System
+   Premium dark engineering aesthetic: deep neutrals, restrained glow,
+   fine technical grids, high contrast typography.
+   ========================================================================== */
+
+@theme {
+  /* Base surfaces */
+  --color-void: #04070b;
+  --color-base: #070b11;
+  --color-surface: #0b1119;
+  --color-surface-2: #101823;
+  --color-line: #1b2635;
+  --color-line-soft: #141c27;
+
+  /* Text */
+  --color-ink: #eef4fb;
+  --color-ink-muted: #9dabbd;
+  --color-ink-faint: #64748b;
+
+  /* Brand — taken from the OfficeHomeTechX mark */
+  --color-brand-50: #f2fce3;
+  --color-brand-100: #e0f7bd;
+  --color-brand-300: #b6e86a;
+  --color-brand: #8cc63f;
+  --color-brand-600: #6ea832;
+  --color-brand-700: #4f7d22;
+
+  --color-signal-300: #7fd0f5;
+  --color-signal: #2aa3e0;
+  --color-signal-600: #1b7fb8;
+  --color-signal-700: #135d88;
+
+  --color-alert: #f2b134;
+
+  /* Typography */
+  --font-sans: "Inter", "Inter Variable", "Segoe UI Variable Text", "Segoe UI",
+    system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", ui-monospace, SFMono-Regular,
+    Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quint: cubic-bezier(0.83, 0, 0.17, 1);
+
+  /* Layout */
+  --spacing-section: 7rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-brand) 35%, transparent);
+    color: #ffffff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e2a3a;
+    border-radius: 999px;
+    border: 2px solid var(--color-void);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2b3a4e;
+  }
+}
+
+@layer components {
+  .container-xl {
+    width: 100%;
+    max-width: 84rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-xl {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-xl {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  /* Glass panel used across cards, navbars and overlays */
+  .glass {
+    background: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.045) 0%,
+      rgba(255, 255, 255, 0.012) 45%,
+      rgba(255, 255, 255, 0.028) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    backdrop-filter: blur(14px) saturate(130%);
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+  }
+
+  .glass-strong {
+    background: rgba(7, 11, 17, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  }
+
+  /* Fine engineering grid */
+  .grid-fine {
+    background-image: linear-gradient(
+        to right,
+        rgba(140, 198, 63, 0.055) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(140, 198, 63, 0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .grid-blueprint {
+    background-image: linear-gradient(
+        to right,
+        rgba(42, 163, 224, 0.07) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(42, 163, 224, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
+  }
+
+  .mask-fade-edges {
+    -webkit-mask-image: radial-gradient(
+      ellipse 70% 65% at 50% 45%,
+      #000 45%,
+      transparent 100%
+    );
+    mask-image: radial-gradient(
+      ellipse 70% 65% at 50% 45%,
+      #000 45%,
+      transparent 100%
+    );
+  }
+
+  .text-gradient-brand {
+    background: linear-gradient(
+      100deg,
+      var(--color-brand-300) 0%,
+      var(--color-brand) 42%,
+      var(--color-signal) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hairline-t {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-brand-300);
+  }
+}
+
+@layer utilities {
+  .glow-brand {
+    box-shadow:
+      0 0 0 1px rgba(140, 198, 63, 0.22),
+      0 0 34px -8px rgba(140, 198, 63, 0.5);
+  }
+
+  .glow-signal {
+    box-shadow:
+      0 0 0 1px rgba(42, 163, 224, 0.22),
+      0 0 34px -8px rgba(42, 163, 224, 0.45);
+  }
+
+  .animate-dash {
+    stroke-dasharray: 6 10;
+    animation: dashflow 1.4s linear infinite;
+  }
+
+  .animate-float-slow {
+    animation: floaty 7s ease-in-out infinite;
+  }
+
+  .animate-pulse-ring {
+    animation: pulsering 2.8s ease-out infinite;
+  }
+}
+
+@keyframes dashflow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulsering {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
