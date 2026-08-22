@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { company } from "@/data/company";
 
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? company.siteUrl;
+  process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "") || company.siteUrl;
 
 interface PageSeoInput {
   title: string;
