@@ -47,7 +47,7 @@ jobs:
             type=ref,event=branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
-            type=sha
+            type=sha,format=long
 
       # On pull_request this builds without pushing, so a broken Dockerfile or a
       # failing `next build` fails the PR instead of the deploy.
@@ -66,7 +66,7 @@ jobs:
 
   deploy:
     needs: build-and-push
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
     steps:
@@ -75,8 +75,7 @@ jobs:
         env:
           DEPLOY_GHCR_USERNAME: ${{ secrets.DEPLOY_GHCR_USERNAME }}
           DEPLOY_GHCR_TOKEN: ${{ secrets.DEPLOY_GHCR_TOKEN }}
-          NOTIFICATION_API_KEY: ${{ secrets.NOTIFICATION_API_KEY }}
-          IMAGE_TAG: ${{ needs.build-and-push.outputs.version }}
+          IMAGE_TAG: sha-${{ github.sha }}
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -86,7 +85,7 @@ jobs:
           command_timeout: 10m
 
           # 🔐 PASS SECRETS TO VPS
-          envs: DEPLOY_GHCR_USERNAME,DEPLOY_GHCR_TOKEN,NOTIFICATION_API_KEY,IMAGE_TAG
+          envs: DEPLOY_GHCR_USERNAME,DEPLOY_GHCR_TOKEN,IMAGE_TAG
           script: |
             set -e
             APP_PATH=/opt/apps/homextech
@@ -96,5 +95,5 @@ jobs:
 
             docker compose pull
             docker compose up -d --remove-orphans
-            docker image prune -af
+            docker image prune -af --filter "until=168h"
             docker compose ps
