@@ -107,7 +107,7 @@ export default function AboutPage() {
                 <p className="eyebrow">Vision</p>
                 <p className="mt-5 text-xl leading-relaxed font-medium tracking-tight text-ink sm:text-2xl">
                   Become a leading practical technology infrastructure and
-                  skills-development company in Africa.
+                  skills-development company in Rwanda.
                 </p>
               </GlassCard>
             </Reveal>

@@ -159,7 +159,7 @@ export function Hero() {
                       {"OfficeHomeTechX Ltd"}
                     </p>
                     <h1 className="text-[2.6rem] leading-[1.03] font-semibold tracking-tight text-ink sm:text-6xl lg:text-[4.1rem]">
-                      Building Africa&apos;s
+                      Building Rwanda&apos;s
                       <br />
                       <span className="text-gradient-brand">
                         technology infrastructure
